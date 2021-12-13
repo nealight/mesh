@@ -8,6 +8,7 @@
 import UIKit
 import Alamofire
 
+
 class SignUpViewController: UIViewController {
     /*
     // MARK: - Navigation
@@ -23,6 +24,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet var emailInput: UITextField!
     @IBOutlet var usernameInput: UITextField!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,16 +37,24 @@ class SignUpViewController: UIViewController {
             return
         }
         
+        
+        
+            
+            
         let parameters: [String: String] = [
             "email": emailText,
             "username": usernameText,
             "password": passwordText,
         ]
+        
+        
+        
 
         // All three of these calls are equivalent
-        AF.request("http://localhost:8080/api/auth/signup", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON(completionHandler: {response in
+        NetworkClient.shared.session.request("https://localhost:8443/api/auth/signup", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON(completionHandler: {response in
             debugPrint(response)
             })
+        
         
         dismiss(animated: true, completion: nil)
     }
