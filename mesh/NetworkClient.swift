@@ -9,28 +9,48 @@ import Foundation
 import Alamofire
 
 class NetworkClient {
-  let evaluators = [
-    "localhost":
+    let localhostTestingDomain = "https://localhost/"
+    let remoteDomain = "https://mesh.dashu.coffee/"
     
+    private var localTestingEnabled = false;
+    
+    private func buildURLForLocalTesting(uri: String) -> String {
+        return NetworkClient.shared.localhostTestingDomain + uri;
+    }
+    
+    public func buildURL(uri: String) -> String {
+        if localTestingEnabled {
+            return buildURLForLocalTesting(uri: uri)
+        }
+        
+        return NetworkClient.shared.remoteDomain + uri;
+    }
+    
+    let evaluators = [
+    "localhost":
+
     PinnedCertificatesTrustEvaluator(certificates: [
       Certificates.meshHost
     ], acceptSelfSignedCertificates: true)
-    
-  ]
-  
-  let session: Session
-  
-  
-  private init() {
+    ]
     
 
-    session = Session(
-        serverTrustManager: ServerTrustManager(evaluators: evaluators)
-    )
-  }
-  
-  
-  public static let shared = NetworkClient()
+    let session: Session
+
+
+    private init() {
+
+        if localTestingEnabled {
+        session = Session(
+            serverTrustManager: ServerTrustManager(evaluators: evaluators)
+        )
+        } else {
+            session = Session()
+        }
+    }
+
+
+    public static let shared = NetworkClient()
   
 }
 

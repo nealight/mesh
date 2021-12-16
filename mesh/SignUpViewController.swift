@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Alamofire
+
 
 
 class SignUpViewController: UIViewController {
@@ -36,24 +36,8 @@ class SignUpViewController: UIViewController {
         guard let passwordText = passwordInput.text, let emailText = emailInput.text, let usernameText = usernameInput.text else {
             return
         }
-        
-        
-        
-            
-            
-        let parameters: [String: String] = [
-            "email": emailText,
-            "username": usernameText,
-            "password": passwordText,
-        ]
-        
-        
-        
 
-        // All three of these calls are equivalent
-        NetworkClient.shared.session.request("https://localhost:8443/api/auth/signup", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON(completionHandler: {response in
-            debugPrint(response)
-            })
+        AccountManager.sharedInstance.registerAccount(emailText: emailText, usernameText: usernameText, passwordText: passwordText)
         
         
         dismiss(animated: true, completion: nil)
