@@ -26,12 +26,13 @@ class ProfileViewController: UIViewController, AccessingUserInfo {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.nameTF.alpha = 0
         // Do any additional setup after loading the view.
     }
     
     func gotUserInfo(userInfo: UserInfo) {
         self.nameTF.text = userInfo.name
+        self.nameTF.alpha = 1
     }
 
     /*
