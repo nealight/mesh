@@ -13,9 +13,13 @@ struct UserInfo {
 }
 
 class AccountManager {
-    static let sharedInstance = AccountManager()
+    static let shared = AccountManager()
     private var loggedIn = false
     private var accessToken: String?
+    
+    private init() {
+        
+    }
     
     
     func isLoggedIn() -> Bool {
@@ -59,6 +63,10 @@ class AccountManager {
             })
     }
     
+    func getAuthenticationToken() -> String? {
+        return accessToken
+    }
+    
     func getUserInfo(vc: AccessingUserInfo) {
         guard let accessToken = accessToken else {
             return
@@ -74,7 +82,7 @@ class AccountManager {
                     vc.gotUserInfo(userInfo: UserInfo(name: json["username"] as! String))
                 }
             
-            })
+        })
         
     }
 }

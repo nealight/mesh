@@ -20,6 +20,7 @@
 		1C235F8C2755DAF10068FEA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C235F8A2755DAF10068FEA8 /* LaunchScreen.storyboard */; };
 		1C235F972755DAF10068FEA8 /* meshTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C235F962755DAF10068FEA8 /* meshTests.swift */; };
 		1C235FA22755DAF10068FEA8 /* meshUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C235FA12755DAF10068FEA8 /* meshUITests.swift */; };
+		1C4E08AF276E719D00D502D9 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4E08AE276E719D00D502D9 /* ImageManager.swift */; };
 		1CD3048A27642E80009DC6D2 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD3048927642E80009DC6D2 /* NetworkClient.swift */; };
 		1CD3049627647973009DC6D2 /* certificate.der in Resources */ = {isa = PBXBuildFile; fileRef = 1CD3049527647973009DC6D2 /* certificate.der */; };
 		1EDBAAC5C43A1266AC52F0D4 /* Pods_mesh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E9A1CFB6C1D20853D2D7944 /* Pods_mesh.framework */; };
@@ -65,6 +66,7 @@
 		1C235F9D2755DAF10068FEA8 /* meshUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = meshUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C235FA12755DAF10068FEA8 /* meshUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = meshUITests.swift; sourceTree = "<group>"; };
 		1C235FA32755DAF10068FEA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1C4E08AE276E719D00D502D9 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		1CD3048927642E80009DC6D2 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		1CD3049527647973009DC6D2 /* certificate.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = certificate.der; sourceTree = "<group>"; };
 		4121485CD71BAD26DA00AC46 /* Pods-mesh.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mesh.release.xcconfig"; path = "Target Support Files/Pods-mesh/Pods-mesh.release.xcconfig"; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				1C178EB02768348100FAD445 /* AccountManager.swift */,
+				1C4E08AE276E719D00D502D9 /* ImageManager.swift */,
 				1CD3048927642E80009DC6D2 /* NetworkClient.swift */,
 			);
 			name = Model;
@@ -473,6 +476,7 @@
 				1C235F822755DAEF0068FEA8 /* SceneDelegate.swift in Sources */,
 				1C178EB82768466200FAD445 /* ProfileViewController.swift in Sources */,
 				1C178EB12768348100FAD445 /* AccountManager.swift in Sources */,
+				1C4E08AF276E719D00D502D9 /* ImageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -649,17 +653,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = B;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DDF2RRVJ39;
 				INFOPLIST_FILE = mesh/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.02;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = dashu.mesh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Distribution Certificate";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -671,17 +677,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = B;
-				DEVELOPMENT_TEAM = DDF2RRVJ39;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = mesh/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.02;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = dashu.mesh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -693,7 +701,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = DDF2RRVJ39;
 				INFOPLIST_FILE = meshTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
@@ -704,6 +714,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = dashu.meshTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mesh.app/mesh";
@@ -716,6 +728,8 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DDF2RRVJ39;
 				INFOPLIST_FILE = meshTests/Info.plist;
@@ -727,6 +741,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = dashu.meshTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mesh.app/mesh";

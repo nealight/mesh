@@ -48,7 +48,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        AccountManager.sharedInstance.loginAccount(emailText: emailText, passwordText: passwordText, vc: self)
+        AccountManager.shared.loginAccount(emailText: emailText, passwordText: passwordText, vc: self)
     }
     
 

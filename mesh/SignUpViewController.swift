@@ -37,7 +37,7 @@ class SignUpViewController: UIViewController {
             return
         }
 
-        AccountManager.sharedInstance.registerAccount(emailText: emailText, usernameText: usernameText, passwordText: passwordText)
+        AccountManager.shared.registerAccount(emailText: emailText, usernameText: usernameText, passwordText: passwordText)
         
         
         dismiss(animated: true, completion: nil)
