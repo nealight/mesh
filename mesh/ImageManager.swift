@@ -43,15 +43,7 @@ class ImageManager {
     
     private func uploadImageWithLink(putURL: String?) {
         
-        guard let putURL = putURL else {
-            return
-        }
-        
-        guard let image = self.image else {
-            return
-        }
-
-        guard let imgData = image.jpegData(compressionQuality: 1) else {
+        guard let putURL = putURL, let image = self.image, let imgData = image.jpegData(compressionQuality: 1) else {
             return
         }
         

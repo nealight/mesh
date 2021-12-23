@@ -22,7 +22,6 @@
 		1C235FA22755DAF10068FEA8 /* meshUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C235FA12755DAF10068FEA8 /* meshUITests.swift */; };
 		1C4E08AF276E719D00D502D9 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4E08AE276E719D00D502D9 /* ImageManager.swift */; };
 		1CD3048A27642E80009DC6D2 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD3048927642E80009DC6D2 /* NetworkClient.swift */; };
-		1CD3049627647973009DC6D2 /* certificate.der in Resources */ = {isa = PBXBuildFile; fileRef = 1CD3049527647973009DC6D2 /* certificate.der */; };
 		1EDBAAC5C43A1266AC52F0D4 /* Pods_mesh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E9A1CFB6C1D20853D2D7944 /* Pods_mesh.framework */; };
 		54CCB25AACA1F917F623CDDD /* Pods_meshTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7148FDF4A69D705228EC9C8D /* Pods_meshTests.framework */; };
 		C50A2015F858ED46CA92A97B /* Pods_mesh_meshUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5770A05204318FF53C2106C /* Pods_mesh_meshUITests.framework */; };
@@ -68,7 +67,6 @@
 		1C235FA32755DAF10068FEA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1C4E08AE276E719D00D502D9 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		1CD3048927642E80009DC6D2 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
-		1CD3049527647973009DC6D2 /* certificate.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = certificate.der; sourceTree = "<group>"; };
 		4121485CD71BAD26DA00AC46 /* Pods-mesh.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mesh.release.xcconfig"; path = "Target Support Files/Pods-mesh/Pods-mesh.release.xcconfig"; sourceTree = "<group>"; };
 		56F096211505657C5412FB9E /* Pods-mesh-meshUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mesh-meshUITests.debug.xcconfig"; path = "Target Support Files/Pods-mesh-meshUITests/Pods-mesh-meshUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7148FDF4A69D705228EC9C8D /* Pods_meshTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_meshTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,7 +138,6 @@
 		1C235F732755DAEF0068FEA8 = {
 			isa = PBXGroup;
 			children = (
-				1CD30486276422BE009DC6D2 /* Certificates */,
 				1C235F7E2755DAEF0068FEA8 /* mesh */,
 				1C235F952755DAF10068FEA8 /* meshTests */,
 				1C235FA02755DAF10068FEA8 /* meshUITests */,
@@ -190,14 +187,6 @@
 				1C235FA32755DAF10068FEA8 /* Info.plist */,
 			);
 			path = meshUITests;
-			sourceTree = "<group>";
-		};
-		1CD30486276422BE009DC6D2 /* Certificates */ = {
-			isa = PBXGroup;
-			children = (
-				1CD3049527647973009DC6D2 /* certificate.der */,
-			);
-			name = Certificates;
 			sourceTree = "<group>";
 		};
 		295E91E4D5F814E04B161479 /* Frameworks */ = {
@@ -340,7 +329,6 @@
 				1C235F8C2755DAF10068FEA8 /* LaunchScreen.storyboard in Resources */,
 				1C235F892755DAF10068FEA8 /* Assets.xcassets in Resources */,
 				1C235F872755DAEF0068FEA8 /* Main.storyboard in Resources */,
-				1CD3049627647973009DC6D2 /* certificate.der in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
