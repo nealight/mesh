@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 protocol AccessingUserInfo {
     func gotUserInfo(userInfo: UserInfo)
@@ -77,6 +78,13 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
         
     }
+    
+    @IBAction func profileDetailButtonPressed(_ sender: UIButton) {
+        let profielDetailView = ProfileDetailView()
+        let viewCtrl = UIHostingController(rootView: profielDetailView)
+        present(viewCtrl, animated: true)
+    }
+    
     
     
 
