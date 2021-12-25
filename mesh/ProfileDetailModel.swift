@@ -7,6 +7,19 @@
 
 import Foundation
 
-class ProfileDetailModel {
+class ProfileDetailsModel: Codable {
+    var models: [ProfileDetailModel]
+}
+
+
+class ProfileDetailModel: Codable {
+    var getURL: String
+    var putURL: String
+    var description: String
     
+    init() {
+        getURL = ""
+        putURL = ""
+        description = ""
+    }
 }
