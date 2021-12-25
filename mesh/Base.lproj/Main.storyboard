@@ -82,6 +82,22 @@
             </objects>
             <point key="canvasLocation" x="928.98550724637687" y="93.75"/>
         </scene>
+        <!--Discover-->
+        <scene sceneID="tsV-0M-JTP">
+            <objects>
+                <viewController id="vGi-19-STy" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FTt-xd-bGt">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="jsQ-Pk-gOU"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Discover" image="circle.grid.cross.fill" catalog="system" id="bkx-rl-zif"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IMT-w7-bBc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1175" y="83"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="8oA-qd-4uF">
             <objects>
@@ -94,6 +110,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="aod-op-pFF" kind="relationship" relationship="viewControllers" id="Jnl-YG-fT3"/>
+                        <segue destination="vGi-19-STy" kind="relationship" relationship="viewControllers" id="61V-33-jdJ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oct-3V-Zs4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -249,6 +266,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="circle.grid.cross.fill" catalog="system" width="128" height="125"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="person.crop.circle" catalog="system" width="128" height="121"/>
         <image name="person.fill.questionmark" catalog="system" width="128" height="104"/>
