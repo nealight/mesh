@@ -44,6 +44,16 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         imagePicker.sourceType = .photoLibrary
         
         self.profileImage.isUserInteractionEnabled = true
+        
+        guard let image = self.profileImage else {
+            return
+        }
+        
+        image.layer.borderWidth = 1
+        image.layer.masksToBounds = false
+        image.layer.borderColor = UIColor.blue.cgColor
+        image.layer.cornerRadius = image.frame.height/2
+        image.clipsToBounds = true
         // Do any additional setup after loading the view.
     }
     
