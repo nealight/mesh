@@ -36,9 +36,6 @@ class AccountManager {
         
         NetworkClient.shared.session.request(NetworkClient.shared.buildURL(uri: "api/auth/signup"), method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON(completionHandler: {response in
                 debugPrint(response)
-                if let json = response.value as? [String:Any] {
-                    debugPrint(json["message"])
-                }
             
             })
         
@@ -53,7 +50,6 @@ class AccountManager {
         NetworkClient.shared.session.request(NetworkClient.shared.buildURL(uri: "api/auth/signin"), method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON(completionHandler: {response in
                 debugPrint(response)
                 if let json = response.value as? [String:Any] {
-                    debugPrint(json["accessToken"])
                     self.accessToken = json["accessToken"] as? String
                     self.loggedIn = true;
                     vc.dismiss(animated: true, completion: nil)

@@ -157,20 +157,31 @@
                                     <constraint firstAttribute="height" constant="40" id="s9P-1m-ZwU"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Profile Detail"/>
+                                <buttonConfiguration key="configuration" style="filled" title="View Profile"/>
                                 <connections>
                                     <action selector="profileDetailButtonPressed:" destination="aod-op-pFF" eventType="touchUpInside" id="iuQ-8F-HaM"/>
                                 </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K28-xR-9gQ">
+                                <rect key="frame" x="20" y="693" width="374" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="gii-kg-9RH"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Change my Profile"/>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rQM-jh-xZk"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="rQM-jh-xZk" firstAttribute="trailing" secondItem="8vm-dG-AHj" secondAttribute="trailing" constant="20" id="9m2-Xp-W8Y"/>
+                            <constraint firstItem="rQM-jh-xZk" firstAttribute="trailing" secondItem="K28-xR-9gQ" secondAttribute="trailing" constant="20" id="AtZ-IZ-mz8"/>
+                            <constraint firstItem="K28-xR-9gQ" firstAttribute="leading" secondItem="rQM-jh-xZk" secondAttribute="leading" constant="20" id="Iue-oc-dRJ"/>
                             <constraint firstItem="rQM-jh-xZk" firstAttribute="bottom" secondItem="8vm-dG-AHj" secondAttribute="bottom" constant="20" id="L7k-44-XCS"/>
                             <constraint firstItem="8vm-dG-AHj" firstAttribute="leading" secondItem="rQM-jh-xZk" secondAttribute="leading" constant="20" id="Q03-rc-oMR"/>
                             <constraint firstItem="iMN-c0-zbW" firstAttribute="top" secondItem="0QM-ne-A0E" secondAttribute="bottom" constant="20" id="R2Q-kZ-J67"/>
                             <constraint firstItem="iMN-c0-zbW" firstAttribute="leading" secondItem="rQM-jh-xZk" secondAttribute="leading" constant="20" id="a8F-BA-qvS"/>
+                            <constraint firstItem="8vm-dG-AHj" firstAttribute="top" secondItem="K28-xR-9gQ" secondAttribute="bottom" constant="20" id="aXh-RR-gcy"/>
                             <constraint firstItem="0QM-ne-A0E" firstAttribute="centerX" secondItem="941-cu-N1X" secondAttribute="centerX" id="d2b-Bk-gpa"/>
                             <constraint firstItem="0QM-ne-A0E" firstAttribute="top" secondItem="rQM-jh-xZk" secondAttribute="top" constant="20" id="m0t-rr-QpZ"/>
                             <constraint firstItem="rQM-jh-xZk" firstAttribute="trailing" secondItem="iMN-c0-zbW" secondAttribute="trailing" constant="20" id="yra-z6-FFJ"/>
