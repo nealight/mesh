@@ -26,6 +26,8 @@ func mapPictureNumberToIndex(number: ProfilePictureNumber) -> Int {
 
 struct ProfileDetailView: View {
     @StateObject private var viewModel = ProfileDetailViewModel()
+    
+    
     @State var selectedPicture: ProfilePictureNumber = .First
     
     
@@ -41,7 +43,11 @@ struct ProfileDetailView: View {
                 .padding()
                 
                 Spacer()
-                ImageWithDescriptionView(profileDescription: viewModel.imagesWithDescription[mapPictureNumberToIndex(number: self.selectedPicture)].description)
+                ImageWithDescriptionView(profileDescription: viewModel.imagesWithDescription[mapPictureNumberToIndex(number: self.selectedPicture)].description, vm: viewModel, selectedPicture: mapPictureNumberToIndex(number: self.selectedPicture)).onTapGesture {
+                    
+                }
+                
+                Spacer()
             }.navigationTitle("Profile Pictures")
         }
     }
@@ -49,16 +55,52 @@ struct ProfileDetailView: View {
 
 struct ImageWithDescriptionView: View {
     var profileDescription: String
+    var vm: ProfileDetailViewModel
+    var selectedPicture: Int
     
     var body: some View {
         VStack {
-            Image(profileDescription).resizable()
-                .scaledToFit()
-                .frame(width: 250.0, height: 250.0, alignment: .top).shadow(color: .white, radius: 100)
+            AsyncImage(
+                        placeholder: {Text("No picture yet!")},
+                        vm: vm,
+                        selectedPicture: selectedPicture
+                    )
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 250.0, height: 250.0, alignment: .center).shadow(color: .white, radius: 100)
+            Spacer()
             Text(profileDescription)
+            Spacer()
         }
     }
 }
+
+struct AsyncImage<Placeholder: View>: View {
+    @StateObject private var loader: ProfileDetailViewModel
+    private let placeholder: Placeholder
+    private let selectedPicture: Int
+
+    init(@ViewBuilder placeholder: () -> Placeholder, vm: ProfileDetailViewModel, selectedPicture: Int) {
+        self.placeholder = placeholder()
+        self.selectedPicture = selectedPicture
+        _loader = StateObject(wrappedValue: vm)
+    }
+
+    var body: some View {
+        content
+    }
+
+    private var content: some View {
+        Group {
+            if loader.images[self.selectedPicture] != nil {
+                Image(uiImage: loader.images[self.selectedPicture]!).resizable()
+            } else {
+                placeholder
+            }
+        }
+    }
+}
+
+
 
 struct ProfileDetailView_Previews: PreviewProvider {
     static var previews: some View {

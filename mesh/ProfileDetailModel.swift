@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class ProfileDetailsModel: Codable {
     var models: [ProfileDetailModel]
@@ -22,4 +23,10 @@ class ProfileDetailModel: Codable {
         putURL = ""
         description = ""
     }
+}
+
+class ProfileDetailImagesModel {
+    var firstImage = Image("")
+    var secondImage = Image("")
+    var thirdImage = Image("")
 }

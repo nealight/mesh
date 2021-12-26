@@ -29,7 +29,7 @@ final class ProfileDetailViewModel: ObservableObject {
     
     
     func retreivedImages() {
-        dataManager.fetchImagesWithDescriptions()?
+        dataManager.fetchImagesURLWithDescriptions()?
                     .sink { (dataResponse) in
                         if dataResponse.error != nil {
                             debugPrint("ProfileDetailView Error")
@@ -37,8 +37,28 @@ final class ProfileDetailViewModel: ObservableObject {
                             let modelsArray = dataResponse.value!.models
                             for i in 0..<min(3, modelsArray.count) {
                                 self.imagesWithDescription[i] = modelsArray[i]
+                                self.load(url: modelsArray[i].getURL, toIndex: i)
                             }
                         }
                     }.store(in: &cancellableSet)
     }
+    
+    @Published var images: [UIImage?] = [nil, nil, nil]
+
+    
+    func load(url: String, toIndex: Int) {
+        guard let convertedURL = URL(string: url) else {
+            return
+        }
+        
+        cancellableSet.insert(URLSession.shared.dataTaskPublisher(for: convertedURL)
+            .map { UIImage(data: $0.data) }
+            .replaceError(with: nil)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] in self?.images[toIndex] = $0 })
+    }
+
 }
+
+
+

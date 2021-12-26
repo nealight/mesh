@@ -20,14 +20,15 @@ struct BackendError: Codable, Error {
 }
 
 protocol ServiceProtocol {
-    func fetchImagesWithDescriptions() -> AnyPublisher<DataResponse<ProfileDetailsModel, NetworkError>, Never>?
+    func fetchImagesURLWithDescriptions() -> AnyPublisher<DataResponse<ProfileDetailsModel, NetworkError>, Never>?
 }
 
 class ImageService: ServiceProtocol {
+    
     static let shared: ServiceProtocol = ImageService()
     private init() { }
     
-    func fetchImagesWithDescriptions() -> AnyPublisher<DataResponse<ProfileDetailsModel, NetworkError>, Never>? {
+    func fetchImagesURLWithDescriptions() -> AnyPublisher<DataResponse<ProfileDetailsModel, NetworkError>, Never>? {
         guard let accessToken = AccountManager.shared.getAuthenticationToken() else {
             return nil
         }
@@ -52,3 +53,5 @@ class ImageService: ServiceProtocol {
     }
     
 }
+
+
