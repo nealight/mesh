@@ -9,6 +9,7 @@ import Foundation
 
 import Alamofire
 import SwiftyJSON
+import UIKit
 
 protocol ImageDataDelegate {
     func retreivedImage(image: UIImage?)
@@ -22,7 +23,7 @@ class ImageManager {
         
     }
     
-    private func getTemporaryLinks(method: String, imageAccessCompletionHandler: @escaping (String?) -> Void) {
+    private func getTemporaryLinks(method: String, imageAccessCompletionHandler: @escaping (String?, UIImage?) -> Void) {
         guard let accessToken = AccountManager.shared.getAuthenticationToken() else {
             return
         }
@@ -36,21 +37,19 @@ class ImageManager {
         NetworkClient.shared.session.request(requestURL, method: .get, headers: headers).validate().responseJSON(completionHandler: {response in
             debugPrint(response)
             if let json = response.value as? [String:Any] {
-                imageAccessCompletionHandler(json[method] as? String)
+                imageAccessCompletionHandler(json[method] as? String, self.image)
             }
         })
     }
     
-    private func uploadImageWithLink(putURL: String?) {
+    public func uploadImageWithLink(putURL: String?, image: UIImage?) {
         
-        guard let putURL = putURL, let image = self.image, let imgData = image.jpegData(compressionQuality: 1) else {
+        guard let putURL = putURL, let image = image, let imgData = image.jpegData(compressionQuality: 1) else {
             return
         }
         
         AF.upload(imgData, to: URL(string: putURL)!, method: .put, headers: nil).responseData(completionHandler: {response in
             debugPrint(response)
-            
-            
         })
 ////        AF.upload(multipartFormData: { (multipartFormData) in
 //                multipartFormData.append(imgData, withName: "file", fileName: "swift_file.png", mimeType: "image/png")
@@ -69,7 +68,7 @@ class ImageManager {
         getTemporaryLinks(method: "getURL", imageAccessCompletionHandler: retrieveImageWithLink)
     }
     
-    private func retrieveImageWithLink(getURL: String?) {
+    private func retrieveImageWithLink(getURL: String?, image: UIImage?) {
         guard let getURL = getURL else {
             return
         }

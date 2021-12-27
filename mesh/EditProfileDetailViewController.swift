@@ -43,7 +43,7 @@ class EditProfileDetailViewController: UIViewController {
         }
         
         debugPrint(profileDetailVC?.rootView.viewModel.getSelectedPictureIndex())
-        uploadVC.profileDetailView = profileDetailVC?.rootView
+        uploadVC.profileDetailViewModel = profileDetailVC?.rootView.viewModel
         
     }
     

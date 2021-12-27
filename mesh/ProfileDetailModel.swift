@@ -15,12 +15,11 @@ class ProfileDetailsModel: Codable {
 
 class ProfileDetailModel: Codable {
     var getURL: String
-    var putURL: String
+    var putURL: String?
     var description: String
     
     init() {
         getURL = ""
-        putURL = ""
         description = ""
     }
 }

@@ -58,7 +58,7 @@
                                     <constraint firstAttribute="width" constant="300" id="vOi-Ej-5hB"/>
                                 </constraints>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="tqk-Az-9Ds" appends="YES" id="77t-ke-ZZj"/>
+                                    <outletCollection property="gestureRecognizers" destination="tqk-Az-9Ds" appends="YES" id="YmA-EC-I8q"/>
                                 </connections>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="top" borderStyle="roundedRect" placeholder="Enter your subtitle for the selected picture!" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="MQK-el-KBj">
@@ -110,7 +110,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bg0-8i-hzY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="tqk-Az-9Ds">
                     <connections>
-                        <action selector="tappedOnProfileImage:" destination="k0q-cN-iPQ" id="T2l-fb-q99"/>
+                        <action selector="tappedOnImage:" destination="k0q-cN-iPQ" id="dAn-Jh-rEu"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

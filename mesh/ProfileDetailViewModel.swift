@@ -30,6 +30,9 @@ final class ProfileDetailViewModel: ObservableObject {
     @Published var imagesWithDescription = [ProfileDetailModel]()
     @Published var profilePictureNumber: ProfilePictureNumber = .First
      
+    func getSelectedPicturePUTURL() -> String? {
+        return imagesWithDescription[getSelectedPictureIndex()].putURL
+    }
      
      func getSelectedPictureIndex() -> Int {
          return mapPictureNumberToIndex(number: self.profilePictureNumber)

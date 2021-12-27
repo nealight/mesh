@@ -44,13 +44,24 @@ struct ImageWithDescriptionView: View {
     
     var body: some View {
         VStack {
-            AsyncImage(
-                        placeholder: {Text("No picture yet!")},
-                        vm: vm,
-                        selectedPicture: selectedPicture
-                    )
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 250.0, height: 250.0, alignment: .center).shadow(color: .white, radius: 100)
+            if #available(iOS 15.0, *) {
+                AsyncImage(
+                    placeholder: {Text("No picture yet!")},
+                    vm: vm,
+                    selectedPicture: selectedPicture
+                )
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 250.0, height: 250.0, alignment: .center).cornerRadius(30).shadow(color: .white, radius: 10)
+            } else {
+                // Fallback on earlier versions
+                AsyncImage(
+                    placeholder: {Text("No picture yet!")},
+                    vm: vm,
+                    selectedPicture: selectedPicture
+                )
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 250.0, height: 250.0, alignment: .center).cornerRadius(30).shadow(color: .white, radius: 5)
+            }
             Spacer()
             Text(profileDescription)
             Spacer()
