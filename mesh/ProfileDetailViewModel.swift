@@ -9,8 +9,31 @@ import Foundation
 import SwiftUI
 import Combine
 
+enum ProfilePictureNumber: String, CaseIterable {
+    case First = "First"
+    case Second = "Second"
+    case Third = "Third"
+}
+
+func mapPictureNumberToIndex(number: ProfilePictureNumber) -> Int {
+    switch number {
+    case .First:
+        return 0
+    case .Second:
+        return 1
+    case .Third:
+        return 2
+    }
+}
+
 final class ProfileDetailViewModel: ObservableObject {
     @Published var imagesWithDescription = [ProfileDetailModel]()
+    @Published var profilePictureNumber: ProfilePictureNumber = .First
+     
+     
+     func getSelectedPictureIndex() -> Int {
+         return mapPictureNumberToIndex(number: self.profilePictureNumber)
+     }
     
     private var cancellableSet: Set<AnyCancellable> = []
     var dataManager: ServiceProtocol

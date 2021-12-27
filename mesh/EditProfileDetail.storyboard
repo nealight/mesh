@@ -52,10 +52,14 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.up.doc.on.clipboard" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="I7E-iW-tyr">
                                 <rect key="frame" x="57" y="18.5" width="300" height="303"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="YfB-kp-3EE"/>
                                     <constraint firstAttribute="width" constant="300" id="vOi-Ej-5hB"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="tqk-Az-9Ds" appends="YES" id="77t-ke-ZZj"/>
+                                </connections>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="top" borderStyle="roundedRect" placeholder="Enter your subtitle for the selected picture!" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="MQK-el-KBj">
                                 <rect key="frame" x="20" y="360" width="374" height="100"/>
@@ -80,6 +84,9 @@
                                         </fragment>
                                     </attributedString>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="tappedOnUploadButton:" destination="k0q-cN-iPQ" eventType="touchUpInside" id="5R7-8N-V0l"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cbl-uO-a6J"/>
@@ -95,8 +102,17 @@
                             <constraint firstItem="cbl-uO-a6J" firstAttribute="bottom" secondItem="EGv-uV-hb7" secondAttribute="bottom" constant="20" id="ll3-eA-gtG"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="descriptionTF" destination="MQK-el-KBj" id="LOY-S8-7ct"/>
+                        <outlet property="profileImage" destination="I7E-iW-tyr" id="b5X-li-5VX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bg0-8i-hzY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="tqk-Az-9Ds">
+                    <connections>
+                        <action selector="tappedOnProfileImage:" destination="k0q-cN-iPQ" id="T2l-fb-q99"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1778" y="95"/>
         </scene>

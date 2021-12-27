@@ -10,10 +10,14 @@ import SwiftUI
 
 class EditProfileDetailViewController: UIViewController {
 
-    let viewCtrl = UIHostingController(rootView: ProfileDetailView(navigationTitle: "My Public Profile"))
+    
+    var profileDetailVC: UIHostingController<ProfileDetailView>?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let profileDetailView = ProfileDetailView(navigationTitle: "My Public Profile")
+        let viewCtrl = UIHostingController(rootView: profileDetailView)
         addChild(viewCtrl)
         view.addSubview(viewCtrl.view)
         // Do any additional setup after loading the view.
@@ -23,20 +27,24 @@ class EditProfileDetailViewController: UIViewController {
         viewCtrl.view?.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         viewCtrl.view.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         viewCtrl.view.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        
+        profileDetailVC = viewCtrl
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    @IBAction func DoneButtonPressed(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-    }
-    */
-    @IBAction func DoneButtonPressed(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true)
+        guard let uploadVC = segue.destination as? ProfileDetailUploadViewController else {
+            return
+        }
+        
+        debugPrint(profileDetailVC?.rootView.viewModel.getSelectedPictureIndex())
+        uploadVC.profileDetailView = profileDetailVC?.rootView
+        
     }
     
 }

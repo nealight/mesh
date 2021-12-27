@@ -7,28 +7,12 @@
 
 import SwiftUI
 
-enum ProfilePictureNumber: String, CaseIterable {
-    case First = "First"
-    case Second = "Second"
-    case Third = "Third"
-}
 
-func mapPictureNumberToIndex(number: ProfilePictureNumber) -> Int {
-    switch number {
-    case .First:
-        return 0
-    case .Second:
-        return 1
-    case .Third:
-        return 2
-    }
-}
 
 struct ProfileDetailView: View {
-    @StateObject private var viewModel = ProfileDetailViewModel()
+    @ObservedObject public var viewModel = ProfileDetailViewModel()
     
     
-    @State var selectedPicture: ProfilePictureNumber = .First
     
     let navigationTitle: String
     
@@ -36,7 +20,7 @@ struct ProfileDetailView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Picker("Choose Profile Picture", selection: $selectedPicture) {
+                Picker("Choose Profile Picture", selection: $viewModel.profilePictureNumber) {
                     ForEach(ProfilePictureNumber.allCases, id:\.self) {
                         Text($0.rawValue)
                     }
@@ -45,7 +29,7 @@ struct ProfileDetailView: View {
                 .padding()
                 
                 Spacer()
-                ImageWithDescriptionView(profileDescription: viewModel.imagesWithDescription[mapPictureNumberToIndex(number: self.selectedPicture)].description, vm: viewModel, selectedPicture: mapPictureNumberToIndex(number: self.selectedPicture))
+                ImageWithDescriptionView(profileDescription: viewModel.imagesWithDescription[viewModel.getSelectedPictureIndex()].description, vm: viewModel, selectedPicture: viewModel.getSelectedPictureIndex())
                 
                 Spacer()
             }.navigationTitle(navigationTitle)
