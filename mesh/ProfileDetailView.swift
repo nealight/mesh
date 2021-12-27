@@ -45,9 +45,7 @@ struct ProfileDetailView: View {
                 .padding()
                 
                 Spacer()
-                ImageWithDescriptionView(profileDescription: viewModel.imagesWithDescription[mapPictureNumberToIndex(number: self.selectedPicture)].description, vm: viewModel, selectedPicture: mapPictureNumberToIndex(number: self.selectedPicture)).onTapGesture {
-                    
-                }
+                ImageWithDescriptionView(profileDescription: viewModel.imagesWithDescription[mapPictureNumberToIndex(number: self.selectedPicture)].description, vm: viewModel, selectedPicture: mapPictureNumberToIndex(number: self.selectedPicture))
                 
                 Spacer()
             }.navigationTitle(navigationTitle)
@@ -67,7 +65,7 @@ struct ImageWithDescriptionView: View {
                         vm: vm,
                         selectedPicture: selectedPicture
                     )
-                .aspectRatio(contentMode: .fill)
+                .aspectRatio(contentMode: .fit)
                 .frame(width: 250.0, height: 250.0, alignment: .center).shadow(color: .white, radius: 100)
             Spacer()
             Text(profileDescription)
