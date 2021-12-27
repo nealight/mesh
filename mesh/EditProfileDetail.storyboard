@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YMd-4z-ePT">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--EditProfileDetailView-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController restorationIdentifier="EditProfileDetailView" title="EditProfileDetailView" id="Y6W-OH-hqX" customClass="EditProfileDetailViewController" customModule="mesh" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Abl-Q2-S0c">
+                        <barButtonItem key="leftBarButtonItem" title="Done" id="2b2-Zt-mU7">
+                            <connections>
+                                <action selector="DoneButtonPressed:" destination="Y6W-OH-hqX" id="BHS-y3-Lv8"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="boz-lX-S7x">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="O6N-Sl-WN5">
+                                <rect key="frame" x="302" y="5" width="92" height="34.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="Edit"/>
+                                <connections>
+                                    <segue destination="k0q-cN-iPQ" kind="presentation" id="hIq-hB-nvD"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1047.8260869565217" y="86.383928571428569"/>
+        </scene>
+        <!--Profile Detail Upload View Controller-->
+        <scene sceneID="vOw-Hp-h6s">
+            <objects>
+                <viewController id="k0q-cN-iPQ" customClass="ProfileDetailUploadViewController" customModule="mesh" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1Bn-0n-I5f">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.up.doc.on.clipboard" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="I7E-iW-tyr">
+                                <rect key="frame" x="57" y="18.5" width="300" height="303"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="YfB-kp-3EE"/>
+                                    <constraint firstAttribute="width" constant="300" id="vOi-Ej-5hB"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="top" borderStyle="roundedRect" placeholder="Enter your subtitle for the selected picture!" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="MQK-el-KBj">
+                                <rect key="frame" x="20" y="360" width="374" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="biB-u3-OCG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EGv-uV-hb7">
+                                <rect key="frame" x="20" y="748" width="374" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="qtw-Bw-a8e"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" subtitle="">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Upload">
+                                            <attributes>
+                                                <font key="NSFont" size="16" name="HelveticaNeue-Bold"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </buttonConfiguration>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="cbl-uO-a6J"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="MQK-el-KBj" firstAttribute="leading" secondItem="cbl-uO-a6J" secondAttribute="leading" constant="20" id="3uu-az-JWa"/>
+                            <constraint firstItem="EGv-uV-hb7" firstAttribute="leading" secondItem="cbl-uO-a6J" secondAttribute="leading" constant="20" id="BV0-GR-iM4"/>
+                            <constraint firstItem="cbl-uO-a6J" firstAttribute="trailing" secondItem="EGv-uV-hb7" secondAttribute="trailing" constant="20" id="ECu-gh-jLz"/>
+                            <constraint firstItem="cbl-uO-a6J" firstAttribute="trailing" secondItem="MQK-el-KBj" secondAttribute="trailing" constant="20" id="UBF-yH-DTK"/>
+                            <constraint firstItem="I7E-iW-tyr" firstAttribute="top" secondItem="cbl-uO-a6J" secondAttribute="top" constant="20" id="UNr-nl-RUl"/>
+                            <constraint firstItem="I7E-iW-tyr" firstAttribute="centerX" secondItem="1Bn-0n-I5f" secondAttribute="centerX" id="WbO-9a-u4y"/>
+                            <constraint firstItem="MQK-el-KBj" firstAttribute="top" secondItem="I7E-iW-tyr" secondAttribute="bottom" constant="40" id="fDE-09-Vn6"/>
+                            <constraint firstItem="cbl-uO-a6J" firstAttribute="bottom" secondItem="EGv-uV-hb7" secondAttribute="bottom" constant="20" id="ll3-eA-gtG"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bg0-8i-hzY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1778" y="95"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="gPy-td-xTJ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YMd-4z-ePT" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZXW-1a-lxF">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="eMy-LJ-xGZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G00-Ds-Ak5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="86.383928571428569"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="8U8-Wc-kfU">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="EiP-YS-ABh" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zeD-ig-Ad5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="833" y="-275"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="arrow.up.doc.on.clipboard" catalog="system" width="116" height="128"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

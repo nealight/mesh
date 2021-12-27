@@ -120,7 +120,7 @@
         <!--Profile-->
         <scene sceneID="x4a-CE-nUO">
             <objects>
-                <viewController id="aod-op-pFF" customClass="ProfileViewController" customModule="mesh" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aod-op-pFF" customClass="ProfileViewController" customModule="mesh" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="941-cu-N1X">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -151,37 +151,26 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8vm-dG-AHj">
-                                <rect key="frame" x="20" y="753" width="374" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="s9P-1m-ZwU"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="View Profile"/>
-                                <connections>
-                                    <action selector="profileDetailButtonPressed:" destination="aod-op-pFF" eventType="touchUpInside" id="iuQ-8F-HaM"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K28-xR-9gQ">
-                                <rect key="frame" x="20" y="693" width="374" height="40"/>
+                                <rect key="frame" x="20" y="334" width="374" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="gii-kg-9RH"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Change my Profile"/>
+                                <connections>
+                                    <segue destination="Gj7-Wo-M5V" kind="presentation" modalPresentationStyle="fullScreen" id="1Q9-dK-iEo"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rQM-jh-xZk"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="rQM-jh-xZk" firstAttribute="trailing" secondItem="8vm-dG-AHj" secondAttribute="trailing" constant="20" id="9m2-Xp-W8Y"/>
+                            <constraint firstItem="K28-xR-9gQ" firstAttribute="top" secondItem="iMN-c0-zbW" secondAttribute="bottom" constant="30" id="2UL-Si-ccr"/>
                             <constraint firstItem="rQM-jh-xZk" firstAttribute="trailing" secondItem="K28-xR-9gQ" secondAttribute="trailing" constant="20" id="AtZ-IZ-mz8"/>
                             <constraint firstItem="K28-xR-9gQ" firstAttribute="leading" secondItem="rQM-jh-xZk" secondAttribute="leading" constant="20" id="Iue-oc-dRJ"/>
-                            <constraint firstItem="rQM-jh-xZk" firstAttribute="bottom" secondItem="8vm-dG-AHj" secondAttribute="bottom" constant="20" id="L7k-44-XCS"/>
-                            <constraint firstItem="8vm-dG-AHj" firstAttribute="leading" secondItem="rQM-jh-xZk" secondAttribute="leading" constant="20" id="Q03-rc-oMR"/>
                             <constraint firstItem="iMN-c0-zbW" firstAttribute="top" secondItem="0QM-ne-A0E" secondAttribute="bottom" constant="20" id="R2Q-kZ-J67"/>
                             <constraint firstItem="iMN-c0-zbW" firstAttribute="leading" secondItem="rQM-jh-xZk" secondAttribute="leading" constant="20" id="a8F-BA-qvS"/>
-                            <constraint firstItem="8vm-dG-AHj" firstAttribute="top" secondItem="K28-xR-9gQ" secondAttribute="bottom" constant="20" id="aXh-RR-gcy"/>
                             <constraint firstItem="0QM-ne-A0E" firstAttribute="centerX" secondItem="941-cu-N1X" secondAttribute="centerX" id="d2b-Bk-gpa"/>
                             <constraint firstItem="0QM-ne-A0E" firstAttribute="top" secondItem="rQM-jh-xZk" secondAttribute="top" constant="20" id="m0t-rr-QpZ"/>
                             <constraint firstItem="rQM-jh-xZk" firstAttribute="trailing" secondItem="iMN-c0-zbW" secondAttribute="trailing" constant="20" id="yra-z6-FFJ"/>
@@ -280,6 +269,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Ch-an-bs9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1697" y="94"/>
+        </scene>
+        <!--EditProfileDetail-->
+        <scene sceneID="RjT-lK-Mku">
+            <objects>
+                <viewControllerPlaceholder storyboardName="EditProfileDetail" id="Gj7-Wo-M5V" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="a76-cc-za2"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N5X-Xi-GqJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-99" y="-303"/>
         </scene>
     </scenes>
     <resources>

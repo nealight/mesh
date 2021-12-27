@@ -12,6 +12,7 @@
 		1C178EB12768348100FAD445 /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C178EB02768348100FAD445 /* AccountManager.swift */; };
 		1C178EB32768411800FAD445 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C178EB22768411800FAD445 /* SignInViewController.swift */; };
 		1C178EB82768466200FAD445 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C178EB72768466200FAD445 /* ProfileViewController.swift */; };
+		1C1A16942779A17300849039 /* ProfileDetailUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1A16932779A17300849039 /* ProfileDetailUploadViewController.swift */; };
 		1C235F802755DAEF0068FEA8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C235F7F2755DAEF0068FEA8 /* AppDelegate.swift */; };
 		1C235F822755DAEF0068FEA8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C235F812755DAEF0068FEA8 /* SceneDelegate.swift */; };
 		1C235F872755DAEF0068FEA8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C235F852755DAEF0068FEA8 /* Main.storyboard */; };
@@ -20,6 +21,8 @@
 		1C235F972755DAF10068FEA8 /* meshTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C235F962755DAF10068FEA8 /* meshTests.swift */; };
 		1C235FA22755DAF10068FEA8 /* meshUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C235FA12755DAF10068FEA8 /* meshUITests.swift */; };
 		1C4E08AF276E719D00D502D9 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4E08AE276E719D00D502D9 /* ImageManager.swift */; };
+		1CB93F0727790AE7007EFBBE /* EditProfileDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CB93F0627790AE7007EFBBE /* EditProfileDetail.storyboard */; };
+		1CB93F0927790C69007EFBBE /* EditProfileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB93F0827790C69007EFBBE /* EditProfileDetailViewController.swift */; };
 		1CCC182827765BA400DDBA18 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC182727765BA400DDBA18 /* ImageService.swift */; };
 		1CD3048A27642E80009DC6D2 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD3048927642E80009DC6D2 /* NetworkClient.swift */; };
 		1CDEB2992775A23D009DD5DA /* ProfileDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDEB2982775A23D009DD5DA /* ProfileDetailView.swift */; };
@@ -55,6 +58,7 @@
 		1C178EB02768348100FAD445 /* AccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManager.swift; sourceTree = "<group>"; };
 		1C178EB22768411800FAD445 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		1C178EB72768466200FAD445 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		1C1A16932779A17300849039 /* ProfileDetailUploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailUploadViewController.swift; sourceTree = "<group>"; };
 		1C235F7C2755DAEF0068FEA8 /* mesh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mesh.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C235F7F2755DAEF0068FEA8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1C235F812755DAEF0068FEA8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +73,8 @@
 		1C235FA12755DAF10068FEA8 /* meshUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = meshUITests.swift; sourceTree = "<group>"; };
 		1C235FA32755DAF10068FEA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1C4E08AE276E719D00D502D9 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
+		1CB93F0627790AE7007EFBBE /* EditProfileDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditProfileDetail.storyboard; sourceTree = "<group>"; };
+		1CB93F0827790C69007EFBBE /* EditProfileDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileDetailViewController.swift; sourceTree = "<group>"; };
 		1CCC182727765BA400DDBA18 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		1CD3048927642E80009DC6D2 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		1CDEB2982775A23D009DD5DA /* ProfileDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailView.swift; sourceTree = "<group>"; };
@@ -119,6 +125,7 @@
 				1CF96A63277821DA003FF56D /* ProfileDetailView */,
 				1C235F852755DAEF0068FEA8 /* Main.storyboard */,
 				1C235F8A2755DAF10068FEA8 /* LaunchScreen.storyboard */,
+				1CB93F0627790AE7007EFBBE /* EditProfileDetail.storyboard */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -131,6 +138,8 @@
 				1C178EB22768411800FAD445 /* SignInViewController.swift */,
 				1C109439275BFA53003638A3 /* SignUpViewController.swift */,
 				1C178EB72768466200FAD445 /* ProfileViewController.swift */,
+				1CB93F0827790C69007EFBBE /* EditProfileDetailViewController.swift */,
+				1C1A16932779A17300849039 /* ProfileDetailUploadViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -347,6 +356,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C235F8C2755DAF10068FEA8 /* LaunchScreen.storyboard in Resources */,
+				1CB93F0727790AE7007EFBBE /* EditProfileDetail.storyboard in Resources */,
 				1C235F892755DAF10068FEA8 /* Assets.xcassets in Resources */,
 				1C235F872755DAEF0068FEA8 /* Main.storyboard in Resources */,
 			);
@@ -483,12 +493,14 @@
 				1C235F802755DAEF0068FEA8 /* AppDelegate.swift in Sources */,
 				1C10943A275BFA53003638A3 /* SignUpViewController.swift in Sources */,
 				1C235F822755DAEF0068FEA8 /* SceneDelegate.swift in Sources */,
+				1CB93F0927790C69007EFBBE /* EditProfileDetailViewController.swift in Sources */,
 				1CCC182827765BA400DDBA18 /* ImageService.swift in Sources */,
 				1C178EB82768466200FAD445 /* ProfileViewController.swift in Sources */,
 				1CDEB2992775A23D009DD5DA /* ProfileDetailView.swift in Sources */,
 				1C178EB12768348100FAD445 /* AccountManager.swift in Sources */,
 				1C4E08AF276E719D00D502D9 /* ImageManager.swift in Sources */,
 				1CF96A652778275B003FF56D /* ImageLoader.swift in Sources */,
+				1C1A16942779A17300849039 /* ProfileDetailUploadViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

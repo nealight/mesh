@@ -30,6 +30,8 @@ struct ProfileDetailView: View {
     
     @State var selectedPicture: ProfilePictureNumber = .First
     
+    let navigationTitle: String
+    
     
     var body: some View {
         NavigationView {
@@ -48,7 +50,7 @@ struct ProfileDetailView: View {
                 }
                 
                 Spacer()
-            }.navigationTitle("Profile Pictures")
+            }.navigationTitle(navigationTitle)
         }
     }
 }
@@ -104,6 +106,6 @@ struct AsyncImage<Placeholder: View>: View {
 
 struct ProfileDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileDetailView()
+        ProfileDetailView(navigationTitle: "Profile Pictures")
     }
 }
