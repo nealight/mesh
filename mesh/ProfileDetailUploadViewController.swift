@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileDetailUploadViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ProfileDetailUploadViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
     @IBOutlet var profileImage: UIImageView!
     var profileDetailViewModel: ProfileDetailViewModel?
@@ -22,6 +22,7 @@ class ProfileDetailUploadViewController: UIViewController, UIImagePickerControll
         
         self.profileImage.isUserInteractionEnabled = true
         self.imagePicker.delegate = self
+        self.descriptionTF.delegate = self
         
         guard let image = self.profileImage else {
             return
@@ -58,6 +59,11 @@ class ProfileDetailUploadViewController: UIViewController, UIImagePickerControll
         }
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
+    }
     
     
 }
