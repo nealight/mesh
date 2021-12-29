@@ -40,6 +40,7 @@ final class ProfileDetailViewModel: ObservableObject {
     
     private var cancellableSet: Set<AnyCancellable> = []
     var dataManager: ServiceProtocol
+    var editTapHandler: (() -> Void)?
     
     init(dataManager: ServiceProtocol = ImageService.shared) {
         self.dataManager = dataManager
@@ -51,7 +52,12 @@ final class ProfileDetailViewModel: ObservableObject {
         retreivedImages()
     }
     
-    
+    func handleTapOnImage() {
+        if let editTapHandler = editTapHandler {
+            editTapHandler()
+        }
+        
+    }
     
     
     func retreivedImages() {

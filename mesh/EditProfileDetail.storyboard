@@ -32,7 +32,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title="Edit"/>
                                 <connections>
-                                    <segue destination="k0q-cN-iPQ" kind="presentation" id="hIq-hB-nvD"/>
+                                    <segue destination="k0q-cN-iPQ" kind="presentation" identifier="editImageSegue" id="hIq-hB-nvD"/>
                                 </connections>
                             </button>
                         </barButtonItem>

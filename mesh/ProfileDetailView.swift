@@ -81,7 +81,9 @@ struct AsyncImage<Placeholder: View>: View {
     }
 
     var body: some View {
-        content
+        content.onTapGesture {
+            loader.handleTapOnImage()
+        }
     }
 
     private var content: some View {
