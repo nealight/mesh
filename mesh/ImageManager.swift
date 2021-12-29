@@ -51,9 +51,6 @@ class ImageManager {
         AF.upload(imgData, to: URL(string: putURL)!, method: .put, headers: nil).responseData(completionHandler: {response in
             debugPrint(response)
         })
-////        AF.upload(multipartFormData: { (multipartFormData) in
-//                multipartFormData.append(imgData, withName: "file", fileName: "swift_file.png", mimeType: "image/png")
-//    }, to: putURL)
     }
     
     

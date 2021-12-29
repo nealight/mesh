@@ -6,15 +6,20 @@
 //
 
 import UIKit
+import Combine
 
 class ProfileDetailUploadViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
     @IBOutlet var profileImage: UIImageView!
     var profileDetailViewModel: ProfileDetailViewModel?
+    let imageManager = ImageManager.shared
+    let imageService = ImageService.shared
     
     @IBOutlet var descriptionTF: UITextField!
     
     let imagePicker = UIImagePickerController()
+    
+    private var cancellableSet: Set<AnyCancellable> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +32,8 @@ class ProfileDetailUploadViewController: UIViewController, UIImagePickerControll
         guard let image = self.profileImage else {
             return
         }
+        
+        self.profileImage.image = profileDetailViewModel?.images[profileDetailViewModel?.getSelectedPictureIndex() ?? 0]
         
         image.layer.borderWidth = 1
         image.layer.masksToBounds = false
@@ -45,7 +52,14 @@ class ProfileDetailUploadViewController: UIViewController, UIImagePickerControll
     
     
     @IBAction func tappedOnUploadButton(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        imageService.uploadImageDescription(index: profileDetailViewModel?.getSelectedPictureIndex() ?? 0, description: descriptionTF.text ?? "")?.sink { (response) in
+            if (response.error != nil) {
+                debugPrint("Description upload error")
+            } else {
+                self.profileDetailViewModel?.retreivedImages()
+                self.dismiss(animated: true, completion: nil)
+            }
+        }.store(in: &cancellableSet)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -55,7 +69,14 @@ class ProfileDetailUploadViewController: UIViewController, UIImagePickerControll
         dismiss(animated: true, completion: nil)
         
         if let image = self.profileImage.image {
-            ImageManager.shared.uploadImageWithLink(putURL: profileDetailViewModel?.getSelectedPicturePUTURL(), image: image)
+            imageService.uploadImageWithLink(putURL: profileDetailViewModel?.getSelectedPicturePUTURL(), image: image)?.sink { (response) in
+                if (response.error != nil) {
+                    debugPrint("Profile Detail Image upload error")
+                } else {
+                    self.profileDetailViewModel?.retreivedImages()
+                }
+            }
+            .store(in: &cancellableSet)
         }
     }
     

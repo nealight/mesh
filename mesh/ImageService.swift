@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import Alamofire
+import SwiftUI
 
 struct NetworkError: Error {
   let initialError: AFError
@@ -21,6 +22,8 @@ struct BackendError: Codable, Error {
 
 protocol ServiceProtocol {
     func fetchImagesURLWithDescriptions() -> AnyPublisher<DataResponse<ProfileDetailsModel, NetworkError>, Never>?
+    func uploadImageDescription(index: Int, description: String) -> AnyPublisher<DataResponse<String, NetworkError>, Never>?
+    func uploadImageWithLink(putURL: String?, image: UIImage?) -> AnyPublisher<DataResponse<Data?, NetworkError>, Never>?
 }
 
 class ImageService: ServiceProtocol {
@@ -51,6 +54,53 @@ class ImageService: ServiceProtocol {
             .eraseToAnyPublisher()
         
     }
+    
+    func uploadImageDescription(index: Int, description: String) -> AnyPublisher<DataResponse<String, NetworkError>, Never>? {
+        guard let accessToken = AccountManager.shared.getAuthenticationToken() else {
+            return nil
+        }
+        
+        let requestURL = NetworkClient.shared.buildURL(uri: "api/profile/addDescriptionToImage")
+        
+        let headers: HTTPHeaders = [
+          "x-access-token": accessToken,
+        ]
+        
+        let parameters: [String: Any] = [
+            "description": description,
+            "index": index
+        ]
+        
+        return NetworkClient.shared.session.request(requestURL, method: .post, parameters: parameters, headers: headers).validate()
+            .publishString()
+            .map { response in
+                response.mapError { error -> NetworkError in
+                    return NetworkError(initialError: error, backendError: nil)
+                }
+            }
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+        
+    }
+    
+    public func uploadImageWithLink(putURL: String?, image: UIImage?) -> AnyPublisher<DataResponse<Data?, NetworkError>, Never>? {
+        
+        guard let putURL = putURL, let image = image, let imgData = image.jpegData(compressionQuality: 1) else {
+            return nil
+        }
+        
+        return AF.upload(imgData, to: URL(string: putURL)!, method: .put, headers: nil)
+            .validate()
+            .publishUnserialized()
+            .map { response in
+            response.mapError { error -> NetworkError in
+                return NetworkError(initialError: error, backendError: nil)
+            }
+        }
+        .receive(on: DispatchQueue.main)
+        .eraseToAnyPublisher()
+    }
+    
     
 }
 
