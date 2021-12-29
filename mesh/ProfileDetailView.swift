@@ -29,6 +29,8 @@ struct ProfileDetailView: View {
                 .padding()
                 
                 Spacer()
+                Spacer()
+                Spacer()
                 ImageWithDescriptionView(profileDescription: viewModel.imagesWithDescription[viewModel.getSelectedPictureIndex()].description, vm: viewModel, selectedPicture: viewModel.getSelectedPictureIndex())
                 
                 Spacer()

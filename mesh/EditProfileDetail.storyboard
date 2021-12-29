@@ -50,7 +50,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.up.doc.on.clipboard" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="I7E-iW-tyr">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.up.doc.on.clipboard" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="I7E-iW-tyr">
                                 <rect key="frame" x="57" y="18.5" width="300" height="303"/>
                                 <gestureRecognizers/>
                                 <constraints>

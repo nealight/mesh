@@ -42,6 +42,7 @@ class ProfileDetailUploadViewController: UIViewController, UIImagePickerControll
         image.layer.borderColor = UIColor.blue.cgColor
         image.layer.cornerRadius = image.frame.height/20
         image.clipsToBounds = true
+
     }
     
     
