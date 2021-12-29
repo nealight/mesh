@@ -35,6 +35,8 @@ class ProfileDetailUploadViewController: UIViewController, UIImagePickerControll
         
         self.profileImage.image = profileDetailViewModel?.images[profileDetailViewModel?.getSelectedPictureIndex() ?? 0]
         
+        self.descriptionTF.text = profileDetailViewModel?.imagesWithDescription[profileDetailViewModel?.getSelectedPictureIndex() ?? 0].description
+        
         image.layer.borderWidth = 1
         image.layer.masksToBounds = false
         image.layer.borderColor = UIColor.blue.cgColor
