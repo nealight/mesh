@@ -29,7 +29,7 @@ protocol ServiceProtocol {
 
 class ImageService: ServiceProtocol {
     func fetchDiscoverImagesURLWithDescriptions() -> AnyPublisher<DataResponse<ProfileDetailsModel, NetworkError>, Never>? {
-        fetchImagesURLWithDescriptions(URI: "api/profile/getDiscoverDescriptionImages")
+        fetchImagesURLWithDescriptions(URI: "api/profile/fetchDiscoverImagesURLWithDescriptions")
     }
     
     

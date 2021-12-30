@@ -10,10 +10,7 @@ import SwiftUI
 
 
 struct ProfileDetailView: View {
-    @ObservedObject public var viewModel = ProfileDetailViewModel()
-    
-    
-    
+    @ObservedObject public var viewModel: ProfileDetailViewModel
     let navigationTitle: String?
     
     
@@ -101,8 +98,8 @@ struct AsyncImage<Placeholder: View>: View {
 
 
 
-struct ProfileDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileDetailView(navigationTitle: "Profile Pictures")
-    }
-}
+//struct ProfileDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ProfileDetailView(navigationTitle: "Profile Pictures")
+//    }
+//}

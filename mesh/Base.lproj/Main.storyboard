@@ -121,9 +121,9 @@
                                 </connections>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iMN-c0-zbW">
-                                <rect key="frame" x="20" y="284" width="374" height="20"/>
+                                <rect key="frame" x="20" y="284" width="374" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="mNU-Nv-fsV"/>
+                                    <constraint firstAttribute="height" constant="40" id="mNU-Nv-fsV"/>
                                 </constraints>
                                 <attributedString key="attributedText">
                                     <fragment content="Name">
@@ -136,7 +136,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K28-xR-9gQ">
-                                <rect key="frame" x="20" y="334" width="374" height="40"/>
+                                <rect key="frame" x="20" y="354" width="374" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="gii-kg-9RH"/>
                                 </constraints>
@@ -147,7 +147,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jFH-I4-ZO0">
-                                <rect key="frame" x="20" y="394" width="374" height="40"/>
+                                <rect key="frame" x="20" y="414" width="374" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Zej-tO-wvW"/>
                                 </constraints>

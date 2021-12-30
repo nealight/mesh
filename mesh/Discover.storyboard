@@ -21,8 +21,19 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Discover" image="circle.grid.cross.fill" catalog="system" id="TUV-wc-afe"/>
                     <navigationItem key="navigationItem" title="Suggestions" id="VRD-cL-LGZ">
-                        <barButtonItem key="leftBarButtonItem" image="xmark.circle" catalog="system" id="17f-W8-4OJ"/>
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="heart.circle" catalog="system" id="yzI-aC-zkI"/>
+                        <barButtonItem key="leftBarButtonItem" image="xmark.circle" catalog="system" id="17f-W8-4OJ">
+                            <connections>
+                                <action selector="pressedOnDislike:" destination="Y6W-OH-hqX" id="d4s-Fc-mrM"/>
+                            </connections>
+                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" image="heart.circle" catalog="system" id="yzI-aC-zkI">
+                                <connections>
+                                    <action selector="pressedOnLike:" destination="Y6W-OH-hqX" id="uHr-pf-Lay"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="link.circle" catalog="system" id="CKf-4f-73J"/>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
@@ -52,6 +63,7 @@
     <resources>
         <image name="circle.grid.cross.fill" catalog="system" width="128" height="125"/>
         <image name="heart.circle" catalog="system" width="128" height="121"/>
+        <image name="link.circle" catalog="system" width="128" height="121"/>
         <image name="xmark.circle" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

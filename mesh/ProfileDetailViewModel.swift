@@ -30,6 +30,7 @@ final class ProfileDetailViewModel: ObservableObject {
     @Published var imagesWithDescription = [ProfileDetailModel]()
     @Published var profilePictureNumber: ProfilePictureNumber = .First
     @Published var name: String = "Annonymous"
+    private var isMyProfile: Bool
     
     func getSelectedPicturePUTURL() -> String? {
         return imagesWithDescription[getSelectedPictureIndex()].putURL
@@ -43,8 +44,9 @@ final class ProfileDetailViewModel: ObservableObject {
     var dataManager: ServiceProtocol
     var editTapHandler: (() -> Void)?
     
-    init(dataManager: ServiceProtocol = ImageService.shared) {
+    init(dataManager: ServiceProtocol = ImageService.shared, isMyProfile: Bool = true) {
         self.dataManager = dataManager
+        self.isMyProfile = isMyProfile
         
         self.imagesWithDescription.append(ProfileDetailModel())
         self.imagesWithDescription.append(ProfileDetailModel())
@@ -62,19 +64,35 @@ final class ProfileDetailViewModel: ObservableObject {
     
     
     func retreivedImages() {
-        dataManager.fetchMyImagesURLWithDescriptions()?
-                    .sink { (dataResponse) in
-                        if dataResponse.error != nil {
-                            debugPrint("ProfileDetailView Error")
-                        } else {
-                            let modelsArray = dataResponse.value!.models
-                            self.name = dataResponse.value!.name
-                            for i in 0..<min(3, modelsArray.count) {
-                                self.imagesWithDescription[i] = modelsArray[i]
-                                self.load(url: modelsArray[i].getURL, toIndex: i)
+        if isMyProfile {
+            dataManager.fetchMyImagesURLWithDescriptions()?
+                        .sink { (dataResponse) in
+                            if dataResponse.error != nil {
+                                debugPrint("ProfileDetailView Error")
+                            } else {
+                                let modelsArray = dataResponse.value!.models
+                                self.name = dataResponse.value!.name
+                                for i in 0..<min(3, modelsArray.count) {
+                                    self.imagesWithDescription[i] = modelsArray[i]
+                                    self.load(url: modelsArray[i].getURL, toIndex: i)
+                                }
                             }
-                        }
-                    }.store(in: &cancellableSet)
+                        }.store(in: &cancellableSet)
+        } else {
+            dataManager.fetchDiscoverImagesURLWithDescriptions()?
+                        .sink { (dataResponse) in
+                            if dataResponse.error != nil {
+                                debugPrint("ProfileDetailView Error")
+                            } else {
+                                let modelsArray = dataResponse.value!.models
+                                self.name = dataResponse.value!.name
+                                for i in 0..<min(3, modelsArray.count) {
+                                    self.imagesWithDescription[i] = modelsArray[i]
+                                    self.load(url: modelsArray[i].getURL, toIndex: i)
+                                }
+                            }
+                        }.store(in: &cancellableSet)
+        }
     }
     
     @Published var images: [UIImage?] = [nil, nil, nil]
