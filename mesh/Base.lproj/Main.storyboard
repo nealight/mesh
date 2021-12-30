@@ -141,10 +141,18 @@
                                     <constraint firstAttribute="height" constant="40" id="gii-kg-9RH"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Change my Profile"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Edit Profile"/>
                                 <connections>
                                     <segue destination="Gj7-Wo-M5V" kind="presentation" modalPresentationStyle="fullScreen" id="1Q9-dK-iEo"/>
                                 </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jFH-I4-ZO0">
+                                <rect key="frame" x="20" y="394" width="374" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Zej-tO-wvW"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="Change Information &amp; Settings"/>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rQM-jh-xZk"/>
@@ -152,10 +160,13 @@
                         <constraints>
                             <constraint firstItem="K28-xR-9gQ" firstAttribute="top" secondItem="iMN-c0-zbW" secondAttribute="bottom" constant="30" id="2UL-Si-ccr"/>
                             <constraint firstItem="rQM-jh-xZk" firstAttribute="trailing" secondItem="K28-xR-9gQ" secondAttribute="trailing" constant="20" id="AtZ-IZ-mz8"/>
+                            <constraint firstItem="jFH-I4-ZO0" firstAttribute="leading" secondItem="rQM-jh-xZk" secondAttribute="leading" constant="20" id="G4t-ke-JRm"/>
                             <constraint firstItem="K28-xR-9gQ" firstAttribute="leading" secondItem="rQM-jh-xZk" secondAttribute="leading" constant="20" id="Iue-oc-dRJ"/>
+                            <constraint firstItem="jFH-I4-ZO0" firstAttribute="top" secondItem="K28-xR-9gQ" secondAttribute="bottom" constant="20" id="Lyd-I6-ZsV"/>
                             <constraint firstItem="iMN-c0-zbW" firstAttribute="top" secondItem="0QM-ne-A0E" secondAttribute="bottom" constant="20" id="R2Q-kZ-J67"/>
                             <constraint firstItem="iMN-c0-zbW" firstAttribute="leading" secondItem="rQM-jh-xZk" secondAttribute="leading" constant="20" id="a8F-BA-qvS"/>
                             <constraint firstItem="0QM-ne-A0E" firstAttribute="centerX" secondItem="941-cu-N1X" secondAttribute="centerX" id="d2b-Bk-gpa"/>
+                            <constraint firstItem="rQM-jh-xZk" firstAttribute="trailing" secondItem="jFH-I4-ZO0" secondAttribute="trailing" constant="20" id="fTH-jA-zFy"/>
                             <constraint firstItem="0QM-ne-A0E" firstAttribute="top" secondItem="rQM-jh-xZk" secondAttribute="top" constant="20" id="m0t-rr-QpZ"/>
                             <constraint firstItem="rQM-jh-xZk" firstAttribute="trailing" secondItem="iMN-c0-zbW" secondAttribute="trailing" constant="20" id="yra-z6-FFJ"/>
                         </constraints>

@@ -10,9 +10,9 @@ import SwiftUI
 import Combine
 
 enum ProfilePictureNumber: String, CaseIterable {
-    case First = "First"
-    case Second = "Second"
-    case Third = "Third"
+    case First = "Me"
+    case Second = "What I Love"
+    case Third = "Weekends"
 }
 
 func mapPictureNumberToIndex(number: ProfilePictureNumber) -> Int {
