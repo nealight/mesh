@@ -21,6 +21,8 @@
 		1C235F972755DAF10068FEA8 /* meshTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C235F962755DAF10068FEA8 /* meshTests.swift */; };
 		1C235FA22755DAF10068FEA8 /* meshUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C235FA12755DAF10068FEA8 /* meshUITests.swift */; };
 		1C4E08AF276E719D00D502D9 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4E08AE276E719D00D502D9 /* ImageManager.swift */; };
+		1C89F864277D316700EF7010 /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C89F863277D316700EF7010 /* Discover.storyboard */; };
+		1C89F866277D31E600EF7010 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C89F865277D31E600EF7010 /* DiscoverViewController.swift */; };
 		1CB93F0727790AE7007EFBBE /* EditProfileDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CB93F0627790AE7007EFBBE /* EditProfileDetail.storyboard */; };
 		1CB93F0927790C69007EFBBE /* EditProfileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB93F0827790C69007EFBBE /* EditProfileDetailViewController.swift */; };
 		1CCC182827765BA400DDBA18 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC182727765BA400DDBA18 /* ImageService.swift */; };
@@ -72,6 +74,8 @@
 		1C235FA12755DAF10068FEA8 /* meshUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = meshUITests.swift; sourceTree = "<group>"; };
 		1C235FA32755DAF10068FEA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1C4E08AE276E719D00D502D9 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
+		1C89F863277D316700EF7010 /* Discover.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
+		1C89F865277D31E600EF7010 /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		1CB93F0627790AE7007EFBBE /* EditProfileDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditProfileDetail.storyboard; sourceTree = "<group>"; };
 		1CB93F0827790C69007EFBBE /* EditProfileDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileDetailViewController.swift; sourceTree = "<group>"; };
 		1CCC182727765BA400DDBA18 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
@@ -124,6 +128,7 @@
 				1C235F852755DAEF0068FEA8 /* Main.storyboard */,
 				1C235F8A2755DAF10068FEA8 /* LaunchScreen.storyboard */,
 				1CB93F0627790AE7007EFBBE /* EditProfileDetail.storyboard */,
+				1C89F863277D316700EF7010 /* Discover.storyboard */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -138,6 +143,7 @@
 				1C178EB72768466200FAD445 /* ProfileViewController.swift */,
 				1CB93F0827790C69007EFBBE /* EditProfileDetailViewController.swift */,
 				1C1A16932779A17300849039 /* ProfileDetailUploadViewController.swift */,
+				1C89F865277D31E600EF7010 /* DiscoverViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -354,6 +360,7 @@
 			files = (
 				1C235F8C2755DAF10068FEA8 /* LaunchScreen.storyboard in Resources */,
 				1CB93F0727790AE7007EFBBE /* EditProfileDetail.storyboard in Resources */,
+				1C89F864277D316700EF7010 /* Discover.storyboard in Resources */,
 				1C235F892755DAF10068FEA8 /* Assets.xcassets in Resources */,
 				1C235F872755DAEF0068FEA8 /* Main.storyboard in Resources */,
 			);
@@ -492,6 +499,7 @@
 				1C235F822755DAEF0068FEA8 /* SceneDelegate.swift in Sources */,
 				1CB93F0927790C69007EFBBE /* EditProfileDetailViewController.swift in Sources */,
 				1CCC182827765BA400DDBA18 /* ImageService.swift in Sources */,
+				1C89F866277D31E600EF7010 /* DiscoverViewController.swift in Sources */,
 				1C178EB82768466200FAD445 /* ProfileViewController.swift in Sources */,
 				1CDEB2992775A23D009DD5DA /* ProfileDetailView.swift in Sources */,
 				1C178EB12768348100FAD445 /* AccountManager.swift in Sources */,
