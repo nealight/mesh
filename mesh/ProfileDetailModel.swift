@@ -10,6 +10,7 @@ import SwiftUI
 
 class ProfileDetailsModel: Codable {
     var models: [ProfileDetailModel]
+    var name: String
 }
 
 

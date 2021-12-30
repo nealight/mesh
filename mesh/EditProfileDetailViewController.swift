@@ -16,7 +16,7 @@ class EditProfileDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let profileDetailView = ProfileDetailView(navigationTitle: "My Public Profile")
+        let profileDetailView = ProfileDetailView(navigationTitle: nil)
         
         profileDetailView.viewModel.editTapHandler = {
             self.performSegue(withIdentifier: "editImageSegue", sender: nil)

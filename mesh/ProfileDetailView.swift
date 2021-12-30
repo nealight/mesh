@@ -14,7 +14,7 @@ struct ProfileDetailView: View {
     
     
     
-    let navigationTitle: String
+    let navigationTitle: String?
     
     
     var body: some View {
@@ -34,7 +34,7 @@ struct ProfileDetailView: View {
                 ImageWithDescriptionView(profileDescription: viewModel.imagesWithDescription[viewModel.getSelectedPictureIndex()].description, vm: viewModel, selectedPicture: viewModel.getSelectedPictureIndex())
                 
                 Spacer()
-            }.navigationTitle(navigationTitle)
+            }.navigationTitle(navigationTitle ?? viewModel.name + "'s Profile")
         }
     }
 }

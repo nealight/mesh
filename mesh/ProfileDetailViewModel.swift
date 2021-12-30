@@ -29,7 +29,8 @@ func mapPictureNumberToIndex(number: ProfilePictureNumber) -> Int {
 final class ProfileDetailViewModel: ObservableObject {
     @Published var imagesWithDescription = [ProfileDetailModel]()
     @Published var profilePictureNumber: ProfilePictureNumber = .First
-     
+    @Published var name: String = "Annonymous"
+    
     func getSelectedPicturePUTURL() -> String? {
         return imagesWithDescription[getSelectedPictureIndex()].putURL
     }
@@ -61,12 +62,13 @@ final class ProfileDetailViewModel: ObservableObject {
     
     
     func retreivedImages() {
-        dataManager.fetchImagesURLWithDescriptions()?
+        dataManager.fetchMyImagesURLWithDescriptions()?
                     .sink { (dataResponse) in
                         if dataResponse.error != nil {
                             debugPrint("ProfileDetailView Error")
                         } else {
                             let modelsArray = dataResponse.value!.models
+                            self.name = dataResponse.value!.name
                             for i in 0..<min(3, modelsArray.count) {
                                 self.imagesWithDescription[i] = modelsArray[i]
                                 self.load(url: modelsArray[i].getURL, toIndex: i)

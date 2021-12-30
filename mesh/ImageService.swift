@@ -21,22 +21,27 @@ struct BackendError: Codable, Error {
 }
 
 protocol ServiceProtocol {
-    func fetchImagesURLWithDescriptions() -> AnyPublisher<DataResponse<ProfileDetailsModel, NetworkError>, Never>?
+    func fetchMyImagesURLWithDescriptions() -> AnyPublisher<DataResponse<ProfileDetailsModel, NetworkError>, Never>?
+    func fetchDiscoverImagesURLWithDescriptions() -> AnyPublisher<DataResponse<ProfileDetailsModel, NetworkError>, Never>?
     func uploadImageDescription(index: Int, description: String) -> AnyPublisher<DataResponse<String, NetworkError>, Never>?
     func uploadImageWithLink(putURL: String?, image: UIImage?) -> AnyPublisher<DataResponse<Data?, NetworkError>, Never>?
 }
 
 class ImageService: ServiceProtocol {
+    func fetchDiscoverImagesURLWithDescriptions() -> AnyPublisher<DataResponse<ProfileDetailsModel, NetworkError>, Never>? {
+        fetchImagesURLWithDescriptions(URI: "api/profile/getDiscoverDescriptionImages")
+    }
+    
     
     static let shared: ServiceProtocol = ImageService()
     private init() { }
     
-    func fetchImagesURLWithDescriptions() -> AnyPublisher<DataResponse<ProfileDetailsModel, NetworkError>, Never>? {
+    private func fetchImagesURLWithDescriptions(URI: String) -> AnyPublisher<DataResponse<ProfileDetailsModel, NetworkError>, Never>? {
         guard let accessToken = AccountManager.shared.getAuthenticationToken() else {
             return nil
         }
         
-        let requestURL = NetworkClient.shared.buildURL(uri: "api/profile/getAllDescriptionImages")
+        let requestURL = NetworkClient.shared.buildURL(uri: URI)
         
         let headers: HTTPHeaders = [
           "x-access-token": accessToken,
@@ -52,6 +57,11 @@ class ImageService: ServiceProtocol {
             }
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
+    }
+    
+    
+    func fetchMyImagesURLWithDescriptions() -> AnyPublisher<DataResponse<ProfileDetailsModel, NetworkError>, Never>? {
+        fetchImagesURLWithDescriptions(URI: "api/profile/getAllDescriptionImages")
         
     }
     
