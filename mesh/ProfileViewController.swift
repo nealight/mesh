@@ -23,6 +23,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
 
     let imagePicker = UIImagePickerController()
+    let signInTokenTimeout = 0.5
     
     @IBOutlet var profileImage: UIImageView!
     @IBOutlet var nameTF: UILabel!
@@ -30,7 +31,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     override func viewDidAppear(_ animated: Bool) {
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)   {
+        DispatchQueue.main.asyncAfter(deadline: .now() + signInTokenTimeout)   {
             self.prepareView()
         }
 
