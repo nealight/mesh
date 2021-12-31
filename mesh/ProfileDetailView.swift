@@ -50,7 +50,7 @@ struct ImageWithDescriptionView: View {
                     selectedPicture: selectedPicture
                 )
                     .aspectRatio(contentMode: .fill)
-                    .frame(width: 250.0, height: 250.0, alignment: .center).cornerRadius(30).shadow(color: .white, radius: 10)
+                    .frame(width: 300, height: 300, alignment: .center).cornerRadius(30).shadow(color: .white, radius: 10)
             } else {
                 // Fallback on earlier versions
                 AsyncImage(
@@ -59,7 +59,7 @@ struct ImageWithDescriptionView: View {
                     selectedPicture: selectedPicture
                 )
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 250.0, height: 250.0, alignment: .center).cornerRadius(30).shadow(color: .white, radius: 5)
+                    .frame(width: 300, height: 300, alignment: .center).cornerRadius(30).shadow(color: .white, radius: 5)
             }
             Spacer()
             Text(profileDescription)
