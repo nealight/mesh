@@ -25,6 +25,10 @@
 		1C89F866277D31E600EF7010 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C89F865277D31E600EF7010 /* DiscoverViewController.swift */; };
 		1CB93F0727790AE7007EFBBE /* EditProfileDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CB93F0627790AE7007EFBBE /* EditProfileDetail.storyboard */; };
 		1CB93F0927790C69007EFBBE /* EditProfileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB93F0827790C69007EFBBE /* EditProfileDetailViewController.swift */; };
+		1CBB5F23277FAA4A0046532D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBB5F22277FAA4A0046532D /* SettingsView.swift */; };
+		1CBB5F25277FAA5A0046532D /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBB5F24277FAA5A0046532D /* SettingsViewModel.swift */; };
+		1CBB5F27277FAC1B0046532D /* Friend.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CBB5F26277FAC1B0046532D /* Friend.storyboard */; };
+		1CBB5F29277FADD20046532D /* BaseTapBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBB5F28277FADD20046532D /* BaseTapBarViewController.swift */; };
 		1CCC182827765BA400DDBA18 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC182727765BA400DDBA18 /* ImageService.swift */; };
 		1CD3048A27642E80009DC6D2 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD3048927642E80009DC6D2 /* NetworkClient.swift */; };
 		1CDEB2992775A23D009DD5DA /* ProfileDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDEB2982775A23D009DD5DA /* ProfileDetailView.swift */; };
@@ -78,6 +82,10 @@
 		1C89F865277D31E600EF7010 /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		1CB93F0627790AE7007EFBBE /* EditProfileDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditProfileDetail.storyboard; sourceTree = "<group>"; };
 		1CB93F0827790C69007EFBBE /* EditProfileDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileDetailViewController.swift; sourceTree = "<group>"; };
+		1CBB5F22277FAA4A0046532D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		1CBB5F24277FAA5A0046532D /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		1CBB5F26277FAC1B0046532D /* Friend.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Friend.storyboard; sourceTree = "<group>"; };
+		1CBB5F28277FADD20046532D /* BaseTapBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTapBarViewController.swift; sourceTree = "<group>"; };
 		1CCC182727765BA400DDBA18 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		1CD3048927642E80009DC6D2 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		1CDEB2982775A23D009DD5DA /* ProfileDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailView.swift; sourceTree = "<group>"; };
@@ -124,11 +132,13 @@
 		1C178EB42768461800FAD445 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				1CF96A63277821DA003FF56D /* ProfileDetailView */,
+				1CBB5F21277FAA0F0046532D /* Settings */,
+				1CF96A63277821DA003FF56D /* ProfileDetail */,
 				1C235F852755DAEF0068FEA8 /* Main.storyboard */,
 				1C235F8A2755DAF10068FEA8 /* LaunchScreen.storyboard */,
 				1CB93F0627790AE7007EFBBE /* EditProfileDetail.storyboard */,
 				1C89F863277D316700EF7010 /* Discover.storyboard */,
+				1CBB5F26277FAC1B0046532D /* Friend.storyboard */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -144,6 +154,7 @@
 				1CB93F0827790C69007EFBBE /* EditProfileDetailViewController.swift */,
 				1C1A16932779A17300849039 /* ProfileDetailUploadViewController.swift */,
 				1C89F865277D31E600EF7010 /* DiscoverViewController.swift */,
+				1CBB5F28277FADD20046532D /* BaseTapBarViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -212,13 +223,22 @@
 			path = meshUITests;
 			sourceTree = "<group>";
 		};
-		1CF96A63277821DA003FF56D /* ProfileDetailView */ = {
+		1CBB5F21277FAA0F0046532D /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				1CBB5F22277FAA4A0046532D /* SettingsView.swift */,
+				1CBB5F24277FAA5A0046532D /* SettingsViewModel.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		1CF96A63277821DA003FF56D /* ProfileDetail */ = {
 			isa = PBXGroup;
 			children = (
 				1CDEB29C2775AFAE009DD5DA /* ProfileDetailViewModel.swift */,
 				1CDEB2982775A23D009DD5DA /* ProfileDetailView.swift */,
 			);
-			name = ProfileDetailView;
+			name = ProfileDetail;
 			sourceTree = "<group>";
 		};
 		295E91E4D5F814E04B161479 /* Frameworks */ = {
@@ -358,6 +378,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CBB5F27277FAC1B0046532D /* Friend.storyboard in Resources */,
 				1C235F8C2755DAF10068FEA8 /* LaunchScreen.storyboard in Resources */,
 				1CB93F0727790AE7007EFBBE /* EditProfileDetail.storyboard in Resources */,
 				1C89F864277D316700EF7010 /* Discover.storyboard in Resources */,
@@ -498,7 +519,10 @@
 				1C10943A275BFA53003638A3 /* SignUpViewController.swift in Sources */,
 				1C235F822755DAEF0068FEA8 /* SceneDelegate.swift in Sources */,
 				1CB93F0927790C69007EFBBE /* EditProfileDetailViewController.swift in Sources */,
+				1CBB5F25277FAA5A0046532D /* SettingsViewModel.swift in Sources */,
 				1CCC182827765BA400DDBA18 /* ImageService.swift in Sources */,
+				1CBB5F23277FAA4A0046532D /* SettingsView.swift in Sources */,
+				1CBB5F29277FADD20046532D /* BaseTapBarViewController.swift in Sources */,
 				1C89F866277D31E600EF7010 /* DiscoverViewController.swift in Sources */,
 				1C178EB82768466200FAD445 /* ProfileViewController.swift in Sources */,
 				1CDEB2992775A23D009DD5DA /* ProfileDetailView.swift in Sources */,
