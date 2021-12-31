@@ -15,15 +15,20 @@ struct UserInfo {
 class AccountManager {
     static let shared = AccountManager()
     private var loggedIn = false
-    private var accessToken: String?
+    private var accessToken: UserDefaults = UserDefaults.standard
     
     private init() {
-        
+        checkTokenValidity()
     }
     
     
     func isLoggedIn() -> Bool {
         return loggedIn
+    }
+    
+    func logOutAccount() {
+        self.accessToken.set(nil, forKey: "token")
+        self.loggedIn = false
     }
     
     func registerAccount(emailText: String, usernameText: String, passwordText: String) {
@@ -50,7 +55,7 @@ class AccountManager {
         NetworkClient.shared.session.request(NetworkClient.shared.buildURL(uri: "api/auth/signin"), method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON(completionHandler: {response in
                 debugPrint(response)
                 if let json = response.value as? [String:Any] {
-                    self.accessToken = json["accessToken"] as? String
+                    self.accessToken.set(json["accessToken"] as? String, forKey: "token")
                     self.loggedIn = true;
                     vc.dismiss(animated: true, completion: nil)
                     
@@ -60,11 +65,11 @@ class AccountManager {
     }
     
     func getAuthenticationToken() -> String? {
-        return accessToken
+        return accessToken.object(forKey: "token") as? String
     }
     
     func getUserInfo(vc: AccessingUserInfo) {
-        guard let accessToken = accessToken else {
+        guard let accessToken = getAuthenticationToken() else {
             return
         }
         
@@ -73,12 +78,32 @@ class AccountManager {
         ]
         
         NetworkClient.shared.session.request(NetworkClient.shared.buildURL(uri: "api/auth/me"), method: .get, headers: headers).validate().responseJSON(completionHandler: {response in
-                debugPrint(response)
                 if let json = response.value as? [String:Any] {
                     vc.gotUserInfo(userInfo: UserInfo(name: json["username"] as! String))
                 }
             
         })
         
+    }
+    
+    private func checkTokenValidity() {
+        guard let accessToken = getAuthenticationToken() else {
+            return
+        }
+        
+        let headers: HTTPHeaders = [
+          "x-access-token": accessToken,
+        ]
+        
+        NetworkClient.shared.session.request(NetworkClient.shared.buildURL(uri: "api/auth/me"), method: .get, headers: headers).validate().responseJSON(completionHandler: {response in
+                if let json = response.value as? [String:Any] {
+                    if json["username"] as? String != nil {
+                        self.loggedIn = true
+                        return
+                    }
+                }
+                self.loggedIn = false
+            
+        })
     }
 }

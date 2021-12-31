@@ -26,14 +26,14 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     @IBOutlet var profileImage: UIImageView!
     @IBOutlet var nameTF: UILabel!
+    let accountManager = AccountManager.shared
     
     override func viewDidAppear(_ animated: Bool) {
         
-        if !AccountManager.shared.isLoggedIn() {
-            performSegue(withIdentifier: "LogInSegue", sender: nil)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)   {
+            self.prepareView()
         }
-        AccountManager.shared.getUserInfo(vc: self)
-        ImageManager.shared.retrieveImage(vc: self)
+
     }
     
     override func viewDidLoad() {
@@ -89,8 +89,19 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         
     }
     
+    @IBAction func logOutButtonPressed(_ sender: UIBarButtonItem) {
+        accountManager.logOutAccount()
+        prepareView()
+    }
     
-    
+    private func prepareView() {
+        if !accountManager.isLoggedIn() {
+            self.performSegue(withIdentifier: "LogInSegue", sender: nil)
+            return
+        }
+        accountManager.getUserInfo(vc: self)
+        ImageManager.shared.retrieveImage(vc: self)
+    }
     
 
 }
