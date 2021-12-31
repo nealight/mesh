@@ -30,10 +30,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     let accountManager = AccountManager.shared
     
     override func viewDidAppear(_ animated: Bool) {
+        prepareView()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + signInTokenTimeout)   {
-            self.prepareView()
-        }
 
     }
     
@@ -61,6 +59,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     func gotUserInfo(userInfo: UserInfo) {
         self.nameTF.text = userInfo.name
         self.nameTF.alpha = 1
+        ImageManager.shared.retrieveImage(vc: self)
     }
 
     /*
@@ -92,16 +91,18 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     @IBAction func logOutButtonPressed(_ sender: UIBarButtonItem) {
         accountManager.logOutAccount()
-        prepareView()
+        self.performSegue(withIdentifier: "LogInSegue", sender: nil)
     }
     
     private func prepareView() {
-        if !accountManager.isLoggedIn() {
-            self.performSegue(withIdentifier: "LogInSegue", sender: nil)
-            return
-        }
         accountManager.getUserInfo(vc: self)
-        ImageManager.shared.retrieveImage(vc: self)
+        DispatchQueue.main.asyncAfter(deadline: .now() + signInTokenTimeout)   {
+            if !self.accountManager.isLoggedIn() {
+                self.performSegue(withIdentifier: "LogInSegue", sender: nil)
+                return
+            }
+
+        }
     }
     
 

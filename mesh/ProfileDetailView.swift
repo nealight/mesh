@@ -31,7 +31,7 @@ struct ProfileDetailView: View {
                 ImageWithDescriptionView(profileDescription: viewModel.imagesWithDescription[viewModel.getSelectedPictureIndex()].description, vm: viewModel, selectedPicture: viewModel.getSelectedPictureIndex())
                 
                 Spacer()
-            }.navigationTitle(navigationTitle ?? viewModel.name + "'s Profile")
+            }.navigationTitle(viewModel.name != "" ? viewModel.name + "'s Profile" : "")
         }
     }
 }

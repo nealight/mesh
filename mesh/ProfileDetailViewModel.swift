@@ -29,7 +29,7 @@ func mapPictureNumberToIndex(number: ProfilePictureNumber) -> Int {
 final class ProfileDetailViewModel: ObservableObject {
     @Published var imagesWithDescription = [ProfileDetailModel]()
     @Published var profilePictureNumber: ProfilePictureNumber = .First
-    @Published var name: String = "Annonymous"
+    @Published var name: String = ""
     private var isMyProfile: Bool
     
     func getSelectedPicturePUTURL() -> String? {

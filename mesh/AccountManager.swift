@@ -18,7 +18,7 @@ class AccountManager {
     private var accessToken: UserDefaults = UserDefaults.standard
     
     private init() {
-        checkTokenValidity()
+        getUserInfo(vc: nil)
     }
     
     
@@ -68,7 +68,7 @@ class AccountManager {
         return accessToken.object(forKey: "token") as? String
     }
     
-    func getUserInfo(vc: AccessingUserInfo) {
+    func getUserInfo(vc: AccessingUserInfo?) {
         guard let accessToken = getAuthenticationToken() else {
             return
         }
@@ -78,32 +78,21 @@ class AccountManager {
         ]
         
         NetworkClient.shared.session.request(NetworkClient.shared.buildURL(uri: "api/auth/me"), method: .get, headers: headers).validate().responseJSON(completionHandler: {response in
-                if let json = response.value as? [String:Any] {
-                    vc.gotUserInfo(userInfo: UserInfo(name: json["username"] as! String))
+            if let json = response.value as? [String:Any] {
+                guard let username = json["username"] as? String else {
+                    self.loggedIn = false
+                    return
                 }
-            
+                if let vc = vc {
+                    vc.gotUserInfo(userInfo: UserInfo(name: username))
+                }
+                self.loggedIn = true
+                return
+
+            }
+            self.loggedIn = false
         })
         
     }
     
-    private func checkTokenValidity() {
-        guard let accessToken = getAuthenticationToken() else {
-            return
-        }
-        
-        let headers: HTTPHeaders = [
-          "x-access-token": accessToken,
-        ]
-        
-        NetworkClient.shared.session.request(NetworkClient.shared.buildURL(uri: "api/auth/me"), method: .get, headers: headers).validate().responseJSON(completionHandler: {response in
-                if let json = response.value as? [String:Any] {
-                    if json["username"] as? String != nil {
-                        self.loggedIn = true
-                        return
-                    }
-                }
-                self.loggedIn = false
-            
-        })
-    }
 }
