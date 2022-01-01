@@ -109,10 +109,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     private func prepareView() {
         accountManager.getUserInfo(vc: self)
         
-        if !self.accountManager.isLoggedIn() {
-            self.performSegue(withIdentifier: "LogInSegue", sender: nil)
-            return
-        }
     }
     
 

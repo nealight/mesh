@@ -96,6 +96,7 @@
                         <segue destination="kvs-ld-tUj" kind="relationship" relationship="viewControllers" id="Jnl-YG-fT3"/>
                         <segue destination="IMs-U8-yi3" kind="relationship" relationship="viewControllers" id="7wE-F8-0ek"/>
                         <segue destination="H85-Ps-FgK" kind="relationship" relationship="viewControllers" id="nmc-0H-l4W"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="LogInSegue" modalPresentationStyle="fullScreen" id="Ts5-WA-Tx8"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oct-3V-Zs4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -325,6 +326,9 @@
             <point key="canvasLocation" x="224.63768115942031" y="93.75"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Ts5-WA-Tx8"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="person.crop.circle" catalog="system" width="128" height="121"/>

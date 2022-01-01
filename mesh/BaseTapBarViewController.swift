@@ -20,7 +20,7 @@ class BaseTapBarViewController: UITabBarController {
         accountManager.$loggedInStatus
             .sink { [self] received in
                 if received == .loggedOut {
-                    self.selectedIndex = 0
+                    self.performSegue(withIdentifier: "LogInSegue", sender: nil)
             }
         }.store(in: &cancellableSet)
         accountManager.challengeTokenValidity()

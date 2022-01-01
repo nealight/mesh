@@ -27,7 +27,6 @@ class AccountManager {
     }
     
     static let shared = AccountManager()
-    private var loggedIn = false
     private var accessToken: UserDefaults = UserDefaults.standard
     @Published public var loggedInStatus: LogInStatus = .loggedIn
     
@@ -38,13 +37,9 @@ class AccountManager {
     }
     
     
-    func isLoggedIn() -> Bool {
-        return loggedIn
-    }
     
     func logOutAccount() {
         self.accessToken.set(nil, forKey: "token")
-        self.loggedIn = false
         self.loggedInStatus = .loggedOut
     }
     
@@ -72,7 +67,6 @@ class AccountManager {
         NetworkClient.shared.session.request(NetworkClient.shared.buildURL(uri: "api/auth/signin"), method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON(completionHandler: {response in
                 if let json = response.value as? [String:Any], let token = json["accessToken"] as? String {
                     self.accessToken.set(token, forKey: "token")
-                    self.loggedIn = true;
                     vc.logInSuccess()
                 } else {
                     vc.logInFailure()
@@ -107,7 +101,6 @@ class AccountManager {
                 
                 if result != self.loggedInStatus {
                     self.loggedInStatus = result
-                    self.loggedIn = (result == .loggedIn)
                 }
                 
             }.store(in: &cancellableSet)
@@ -128,17 +121,17 @@ class AccountManager {
         NetworkClient.shared.session.request(NetworkClient.shared.buildURL(uri: "api/auth/me"), method: .get, headers: headers).validate().responseJSON(completionHandler: {response in
             if let json = response.value as? [String:Any] {
                 guard let username = json["username"] as? String else {
-                    self.loggedIn = false
+                    
                     return
                 }
                 if let vc = vc {
                     vc.gotUserInfo(userInfo: UserInfo(name: username))
                 }
-                self.loggedIn = true
+                
                 return
 
             }
-            self.loggedIn = false
+            
         })
         
     }
