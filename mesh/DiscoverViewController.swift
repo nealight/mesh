@@ -24,6 +24,7 @@ class DiscoverViewController: UIViewController {
             .sink { [weak self] received in
                 if received == .loggedIn {
                 self?.initializeProfileView()
+            
             }
         }.store(in: &cancellableSet)
     }

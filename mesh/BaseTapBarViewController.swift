@@ -23,6 +23,7 @@ class BaseTapBarViewController: UITabBarController {
                     self.selectedIndex = 0
             }
         }.store(in: &cancellableSet)
+        accountManager.challengeTokenValidity()
         
     }
     

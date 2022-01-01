@@ -86,6 +86,7 @@ class AccountManager {
     
     func challengeTokenValidity() {
         guard let accessToken = getAuthenticationToken() else {
+            self.loggedInStatus = .loggedOut
             return
         }
         
@@ -106,6 +107,7 @@ class AccountManager {
                 
                 if result != self.loggedInStatus {
                     self.loggedInStatus = result
+                    self.loggedIn = (result == .loggedIn)
                 }
                 
             }.store(in: &cancellableSet)
