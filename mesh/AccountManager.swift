@@ -8,6 +8,7 @@
 import Foundation
 import Alamofire
 import Combine
+import SwiftUI
 
 protocol logInDelegate {
     func logInSuccess()
@@ -18,10 +19,19 @@ struct UserInfo {
     var name: String
 }
 
+
 class AccountManager {
+    public enum LogInStatus: String {
+        case loggedIn = "loggedIn"
+        case loggedOut = "loggedOut"
+    }
+    
     static let shared = AccountManager()
     private var loggedIn = false
     private var accessToken: UserDefaults = UserDefaults.standard
+    @Published public var loggedInStatus: LogInStatus = .loggedIn
+    
+    private var cancellableSet: Set<AnyCancellable> = []
     
     private init() {
         getUserInfo(vc: nil)
@@ -35,6 +45,7 @@ class AccountManager {
     func logOutAccount() {
         self.accessToken.set(nil, forKey: "token")
         self.loggedIn = false
+        self.loggedInStatus = .loggedOut
     }
     
     func registerAccount(emailText: String, usernameText: String, passwordText: String) {
@@ -73,9 +84,9 @@ class AccountManager {
         return accessToken.object(forKey: "token") as? String
     }
     
-    func challengeTokenValidity() -> URLSession.DataTaskPublisher? {
+    func challengeTokenValidity() {
         guard let accessToken = getAuthenticationToken() else {
-            return nil
+            return
         }
         
         let headers: HTTPHeaders = [
@@ -83,9 +94,23 @@ class AccountManager {
         ]
         
         do {
-            return URLSession.shared.dataTaskPublisher(for: try URLRequest(url: NetworkClient.shared.buildURL(uri: "api/auth/challenge"), method: .get, headers: headers))
+            URLSession.shared.dataTaskPublisher(for: try URLRequest(url: NetworkClient.shared.buildURL(uri: "api/auth/challenge"), method: .get, headers: headers)).replaceError(with: (Data(), URLResponse())).map { String(data: $0.data, encoding: .utf8) }
+            .receive(on: DispatchQueue.main)
+            .sink { (response) in
+                var result = self.loggedInStatus
+                if response == "success" {
+                    result = .loggedIn
+                } else {
+                    result = .loggedOut
+                }
+                
+                if result != self.loggedInStatus {
+                    self.loggedInStatus = result
+                }
+                
+            }.store(in: &cancellableSet)
         } catch {
-            return nil
+            return
         }
     }
     

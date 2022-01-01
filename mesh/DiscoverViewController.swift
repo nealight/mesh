@@ -16,16 +16,21 @@ struct DiscoverError: Error {
 class DiscoverViewController: UIViewController {
     var profileDetailVC: UIHostingController<ProfileDetailView>?
     private var cancellableSet: Set<AnyCancellable> = []
+    let accountManager = AccountManager.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        AccountManager.shared.challengeTokenValidity()?.replaceError(with: (Data(), URLResponse())).map { String(data: $0.data, encoding: .utf8) }
-        .receive(on: DispatchQueue.main)
-        .sink { [weak self] (response) in
-            if response == "success" {
+        accountManager.$loggedInStatus
+            .sink { [weak self] received in
+                if received == .loggedIn {
                 self?.initializeProfileView()
             }
         }.store(in: &cancellableSet)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        AccountManager.shared.challengeTokenValidity()
     }
     
     

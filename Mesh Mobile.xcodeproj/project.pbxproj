@@ -147,13 +147,13 @@
 			isa = PBXGroup;
 			children = (
 				1C235F812755DAEF0068FEA8 /* SceneDelegate.swift */,
-				1C235F7F2755DAEF0068FEA8 /* AppDelegate.swift */,
 				1C178EB22768411800FAD445 /* SignInViewController.swift */,
 				1C109439275BFA53003638A3 /* SignUpViewController.swift */,
 				1C178EB72768466200FAD445 /* ProfileViewController.swift */,
 				1CB93F0827790C69007EFBBE /* EditProfileDetailViewController.swift */,
 				1C1A16932779A17300849039 /* ProfileDetailUploadViewController.swift */,
 				1C89F865277D31E600EF7010 /* DiscoverViewController.swift */,
+				1C235F7F2755DAEF0068FEA8 /* AppDelegate.swift */,
 				1CBB5F28277FADD20046532D /* BaseTapBarViewController.swift */,
 			);
 			name = Controller;
