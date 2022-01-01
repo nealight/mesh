@@ -32,7 +32,7 @@ struct ProfileDetailView: View {
                 
                 Spacer()
             }.navigationTitle(viewModel.name != "" ? viewModel.name + "'s Profile" : "")
-        }
+        }.navigationViewStyle(.stack)
     }
 }
 

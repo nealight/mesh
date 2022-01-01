@@ -8,10 +8,17 @@
 import UIKit
 
 class BaseTapBarViewController: UITabBarController {
-
+    
+    let signInTokenTimeout = 0.5
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.selectedIndex = 1
+        DispatchQueue.main.asyncAfter(deadline: .now() + signInTokenTimeout)   {
+            if !AccountManager.shared.isLoggedIn() {
+                self.selectedIndex = 0
+            }
+        }
         // Do any additional setup after loading the view.
     }
     

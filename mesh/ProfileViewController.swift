@@ -96,13 +96,13 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     private func prepareView() {
         accountManager.getUserInfo(vc: self)
-        DispatchQueue.main.asyncAfter(deadline: .now() + signInTokenTimeout)   {
-            if !self.accountManager.isLoggedIn() {
-                self.performSegue(withIdentifier: "LogInSegue", sender: nil)
-                return
-            }
-
+        
+        if !self.accountManager.isLoggedIn() {
+            self.performSegue(withIdentifier: "LogInSegue", sender: nil)
+            return
         }
+
+        
     }
     
 
