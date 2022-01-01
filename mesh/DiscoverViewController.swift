@@ -9,16 +9,25 @@ import UIKit
 import SwiftUI
 import Combine
 
+struct DiscoverError: Error {
+    
+}
+
 class DiscoverViewController: UIViewController {
     var profileDetailVC: UIHostingController<ProfileDetailView>?
+    private var cancellableSet: Set<AnyCancellable> = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        AccountManager.shared.challengeTokenValidity()?.replaceError(with: (Data(), URLResponse())).map { String(data: $0.data, encoding: .utf8) }
+        .receive(on: DispatchQueue.main)
+        .sink { [weak self] (response) in
+            if response == "success" {
+                self?.initializeProfileView()
+            }
+        }.store(in: &cancellableSet)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        initializeProfileView()
-    }
     
     func initializeProfileView() {
         let profileDetailView = ProfileDetailView(viewModel: ProfileDetailViewModel(isMyProfile: false), navigationTitle: nil)

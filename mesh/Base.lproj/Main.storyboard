@@ -154,6 +154,9 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="tinted" title="Change Information &amp; Settings"/>
+                                <connections>
+                                    <action selector="settingsButtonTapped:" destination="aod-op-pFF" eventType="touchUpInside" id="zhu-Gd-l6A"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rQM-jh-xZk"/>

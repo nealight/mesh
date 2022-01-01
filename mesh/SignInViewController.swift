@@ -7,8 +7,18 @@
 
 import UIKit
 
-class SignInViewController: UIViewController, UITextFieldDelegate {
-
+class SignInViewController: UIViewController, UITextFieldDelegate, logInDelegate {
+    func logInSuccess() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func logInFailure() {
+        let alert = UIAlertController(title: "Login Failure", message: "Your account and password do not match.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+        NSLog("The \"OK\" alert occured.")
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
     
     @IBOutlet var emailTF: UITextField!
     @IBOutlet var passwordTF: UITextField!

@@ -8,11 +8,17 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @State private var displayedName = ""
+    @State private var linkedInLink = ""
+    
     var body: some View {
         NavigationView {
-            Group {
-                Text("Hey!")
-            }.foregroundColor(.white).background(Color.gray).frame(width: 200, height: 200, alignment: .center).navigationBarTitle("Settings")
+            Form {
+                Section(header: Text("Personal Information")) {
+                    TextField("Displayed Name", text: $displayedName)
+                    TextField("Website Link", text: $linkedInLink)
+                }
+            }.background(Color.gray).navigationTitle("Settings")
         }
     }
 }

@@ -13,6 +13,9 @@ protocol AccessingUserInfo {
 }
 
 class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, AccessingUserInfo, UINavigationControllerDelegate, ImageDataDelegate {
+    
+    var settingsVC: UIHostingController<SettingsView>?
+    
     func retreivedImage(image: UIImage?) {
         guard let image = image else {
             return
@@ -31,7 +34,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     override func viewDidAppear(_ animated: Bool) {
         prepareView()
-        
 
     }
     
@@ -53,7 +55,10 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         image.layer.borderColor = UIColor.blue.cgColor
         image.layer.cornerRadius = image.frame.height/2
         image.clipsToBounds = true
-        // Do any additional setup after loading the view.
+        
+        
+        let settingsView = SettingsView()
+        settingsVC = UIHostingController(rootView: settingsView)
     }
     
     func gotUserInfo(userInfo: UserInfo) {
@@ -94,6 +99,13 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         self.performSegue(withIdentifier: "LogInSegue", sender: nil)
     }
     
+    @IBAction func settingsButtonTapped(_ sender: UIButton) {
+        if let settingsVC = settingsVC {
+            present(settingsVC, animated: true, completion: nil)
+        }
+    }
+    
+    
     private func prepareView() {
         accountManager.getUserInfo(vc: self)
         
@@ -101,8 +113,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             self.performSegue(withIdentifier: "LogInSegue", sender: nil)
             return
         }
-
-        
     }
     
 

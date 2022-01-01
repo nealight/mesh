@@ -7,6 +7,12 @@
 
 import Foundation
 import Alamofire
+import Combine
+
+protocol logInDelegate {
+    func logInSuccess()
+    func logInFailure()
+}
 
 struct UserInfo {
     var name: String
@@ -46,26 +52,41 @@ class AccountManager {
         
     }
     
-    func loginAccount(emailText: String, passwordText: String, vc: SignInViewController) {
+    func loginAccount(emailText: String, passwordText: String, vc: logInDelegate) {
         let parameters: [String: String] = [
             "email": emailText,
             "password": passwordText
         ]
         
         NetworkClient.shared.session.request(NetworkClient.shared.buildURL(uri: "api/auth/signin"), method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON(completionHandler: {response in
-                debugPrint(response)
-                if let json = response.value as? [String:Any] {
-                    self.accessToken.set(json["accessToken"] as? String, forKey: "token")
+                if let json = response.value as? [String:Any], let token = json["accessToken"] as? String {
+                    self.accessToken.set(token, forKey: "token")
                     self.loggedIn = true;
-                    vc.dismiss(animated: true, completion: nil)
-                    
+                    vc.logInSuccess()
+                } else {
+                    vc.logInFailure()
                 }
-            
             })
     }
     
     func getAuthenticationToken() -> String? {
         return accessToken.object(forKey: "token") as? String
+    }
+    
+    func challengeTokenValidity() -> URLSession.DataTaskPublisher? {
+        guard let accessToken = getAuthenticationToken() else {
+            return nil
+        }
+        
+        let headers: HTTPHeaders = [
+          "x-access-token": accessToken,
+        ]
+        
+        do {
+            return URLSession.shared.dataTaskPublisher(for: try URLRequest(url: NetworkClient.shared.buildURL(uri: "api/auth/challenge"), method: .get, headers: headers))
+        } catch {
+            return nil
+        }
     }
     
     func getUserInfo(vc: AccessingUserInfo?) {

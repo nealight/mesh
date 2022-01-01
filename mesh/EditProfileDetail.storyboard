@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YMd-4z-ePT">
-    <device id="ipad12_9rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
+    <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
@@ -14,7 +14,7 @@
             <objects>
                 <viewController restorationIdentifier="EditProfileDetailView" title="EditProfileDetailView" id="Y6W-OH-hqX" customClass="EditProfileDetailViewController" customModule="mesh" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -27,7 +27,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="boz-lX-S7x">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="O6N-Sl-WN5">
-                                <rect key="frame" x="912" y="8" width="92" height="34.5"/>
+                                <rect key="frame" x="316" y="4.6666666666666679" width="92" height="34.666666666666657"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title="Edit"/>
@@ -47,11 +47,11 @@
             <objects>
                 <viewController id="k0q-cN-iPQ" customClass="ProfileDetailUploadViewController" customModule="mesh" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1Bn-0n-I5f">
-                        <rect key="frame" x="0.0" y="0.0" width="704" height="995.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="872"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.up.doc.on.clipboard" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="I7E-iW-tyr">
-                                <rect key="frame" x="202" y="18.5" width="300" height="303"/>
+                                <rect key="frame" x="64" y="18.666666666666657" width="300" height="302.66666666666669"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="YfB-kp-3EE"/>
@@ -62,7 +62,7 @@
                                 </connections>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="top" borderStyle="roundedRect" placeholder="Enter your subtitle for the selected picture!" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="MQK-el-KBj">
-                                <rect key="frame" x="20" y="360" width="664" height="100"/>
+                                <rect key="frame" x="20" y="360" width="388" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="biB-u3-OCG"/>
                                 </constraints>
@@ -70,7 +70,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EGv-uV-hb7">
-                                <rect key="frame" x="20" y="935.5" width="664" height="40"/>
+                                <rect key="frame" x="20" y="778" width="388" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="qtw-Bw-a8e"/>
                                 </constraints>
@@ -122,7 +122,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YMd-4z-ePT" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZXW-1a-lxF">
-                        <rect key="frame" x="0.0" y="24" width="1024" height="50"/>
+                        <rect key="frame" x="0.0" y="44" width="428" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
