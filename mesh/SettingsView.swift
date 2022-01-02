@@ -19,7 +19,7 @@ struct SettingsView: View {
                     TextField("Website Link", text: $linkedInLink)
                 }
             }.background(Color.gray).navigationTitle("Settings")
-        }
+        }.navigationViewStyle(.stack)
     }
 }
 
