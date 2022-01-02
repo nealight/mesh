@@ -29,6 +29,7 @@
 		1CBB5F25277FAA5A0046532D /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBB5F24277FAA5A0046532D /* SettingsViewModel.swift */; };
 		1CBB5F27277FAC1B0046532D /* Friend.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CBB5F26277FAC1B0046532D /* Friend.storyboard */; };
 		1CBB5F29277FADD20046532D /* BaseTapBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBB5F28277FADD20046532D /* BaseTapBarViewController.swift */; };
+		1CC1F721278171F2005358D0 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1CC1F720278171F2005358D0 /* README.md */; };
 		1CCC182827765BA400DDBA18 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC182727765BA400DDBA18 /* ImageService.swift */; };
 		1CD3048A27642E80009DC6D2 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD3048927642E80009DC6D2 /* NetworkClient.swift */; };
 		1CDEB2992775A23D009DD5DA /* ProfileDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDEB2982775A23D009DD5DA /* ProfileDetailView.swift */; };
@@ -86,6 +87,7 @@
 		1CBB5F24277FAA5A0046532D /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		1CBB5F26277FAC1B0046532D /* Friend.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Friend.storyboard; sourceTree = "<group>"; };
 		1CBB5F28277FADD20046532D /* BaseTapBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTapBarViewController.swift; sourceTree = "<group>"; };
+		1CC1F720278171F2005358D0 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1CCC182727765BA400DDBA18 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		1CD3048927642E80009DC6D2 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		1CDEB2982775A23D009DD5DA /* ProfileDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailView.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 		1C235F732755DAEF0068FEA8 = {
 			isa = PBXGroup;
 			children = (
+				1CC1F720278171F2005358D0 /* README.md */,
 				1C235F7E2755DAEF0068FEA8 /* mesh */,
 				1C235F952755DAF10068FEA8 /* meshTests */,
 				1C235FA02755DAF10068FEA8 /* meshUITests */,
@@ -381,6 +384,7 @@
 				1CBB5F27277FAC1B0046532D /* Friend.storyboard in Resources */,
 				1C235F8C2755DAF10068FEA8 /* LaunchScreen.storyboard in Resources */,
 				1CB93F0727790AE7007EFBBE /* EditProfileDetail.storyboard in Resources */,
+				1CC1F721278171F2005358D0 /* README.md in Resources */,
 				1C89F864277D316700EF7010 /* Discover.storyboard in Resources */,
 				1C235F892755DAF10068FEA8 /* Assets.xcassets in Resources */,
 				1C235F872755DAEF0068FEA8 /* Main.storyboard in Resources */,
