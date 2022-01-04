@@ -13,7 +13,7 @@ class ProfileDetailUploadViewController: UIViewController, UIImagePickerControll
     @IBOutlet var profileImage: UIImageView!
     var profileDetailViewModel: ProfileDetailViewModel?
     let imageManager = ImageManager.shared
-    let imageService = ImageService.shared
+    let imageService = ProfileService.shared
     
     @IBOutlet var descriptionTF: UITextField!
     

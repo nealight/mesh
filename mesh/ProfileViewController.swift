@@ -57,7 +57,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         image.clipsToBounds = true
         
         
-        let settingsView = SettingsView()
+        let settingsView = SettingsView(viewModel: SettingsViewModel())
         settingsVC = UIHostingController(rootView: settingsView)
     }
     

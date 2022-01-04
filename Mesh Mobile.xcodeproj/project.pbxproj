@@ -30,11 +30,11 @@
 		1CBB5F27277FAC1B0046532D /* Friend.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CBB5F26277FAC1B0046532D /* Friend.storyboard */; };
 		1CBB5F29277FADD20046532D /* BaseTapBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBB5F28277FADD20046532D /* BaseTapBarViewController.swift */; };
 		1CC1F721278171F2005358D0 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1CC1F720278171F2005358D0 /* README.md */; };
-		1CCC182827765BA400DDBA18 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC182727765BA400DDBA18 /* ImageService.swift */; };
+		1CCC182827765BA400DDBA18 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC182727765BA400DDBA18 /* ProfileService.swift */; };
 		1CD3048A27642E80009DC6D2 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD3048927642E80009DC6D2 /* NetworkClient.swift */; };
 		1CDEB2992775A23D009DD5DA /* ProfileDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDEB2982775A23D009DD5DA /* ProfileDetailView.swift */; };
 		1CDEB29D2775AFAE009DD5DA /* ProfileDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDEB29C2775AFAE009DD5DA /* ProfileDetailViewModel.swift */; };
-		1CDEB29F2775B106009DD5DA /* ProfileDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDEB29E2775B106009DD5DA /* ProfileDetailModel.swift */; };
+		1CDEB29F2775B106009DD5DA /* ProfileImageDescriptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDEB29E2775B106009DD5DA /* ProfileImageDescriptionModel.swift */; };
 		1EDBAAC5C43A1266AC52F0D4 /* Pods_mesh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E9A1CFB6C1D20853D2D7944 /* Pods_mesh.framework */; };
 		54CCB25AACA1F917F623CDDD /* Pods_meshTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7148FDF4A69D705228EC9C8D /* Pods_meshTests.framework */; };
 		C50A2015F858ED46CA92A97B /* Pods_mesh_meshUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5770A05204318FF53C2106C /* Pods_mesh_meshUITests.framework */; };
@@ -88,11 +88,11 @@
 		1CBB5F26277FAC1B0046532D /* Friend.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Friend.storyboard; sourceTree = "<group>"; };
 		1CBB5F28277FADD20046532D /* BaseTapBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTapBarViewController.swift; sourceTree = "<group>"; };
 		1CC1F720278171F2005358D0 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		1CCC182727765BA400DDBA18 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
+		1CCC182727765BA400DDBA18 /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
 		1CD3048927642E80009DC6D2 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		1CDEB2982775A23D009DD5DA /* ProfileDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailView.swift; sourceTree = "<group>"; };
 		1CDEB29C2775AFAE009DD5DA /* ProfileDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewModel.swift; sourceTree = "<group>"; };
-		1CDEB29E2775B106009DD5DA /* ProfileDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailModel.swift; sourceTree = "<group>"; };
+		1CDEB29E2775B106009DD5DA /* ProfileImageDescriptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageDescriptionModel.swift; sourceTree = "<group>"; };
 		4121485CD71BAD26DA00AC46 /* Pods-mesh.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mesh.release.xcconfig"; path = "Target Support Files/Pods-mesh/Pods-mesh.release.xcconfig"; sourceTree = "<group>"; };
 		56F096211505657C5412FB9E /* Pods-mesh-meshUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mesh-meshUITests.debug.xcconfig"; path = "Target Support Files/Pods-mesh-meshUITests/Pods-mesh-meshUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7148FDF4A69D705228EC9C8D /* Pods_meshTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_meshTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -168,8 +168,8 @@
 				1C178EB02768348100FAD445 /* AccountManager.swift */,
 				1C4E08AE276E719D00D502D9 /* ImageManager.swift */,
 				1CD3048927642E80009DC6D2 /* NetworkClient.swift */,
-				1CDEB29E2775B106009DD5DA /* ProfileDetailModel.swift */,
-				1CCC182727765BA400DDBA18 /* ImageService.swift */,
+				1CDEB29E2775B106009DD5DA /* ProfileImageDescriptionModel.swift */,
+				1CCC182727765BA400DDBA18 /* ProfileService.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -515,7 +515,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1CDEB29F2775B106009DD5DA /* ProfileDetailModel.swift in Sources */,
+				1CDEB29F2775B106009DD5DA /* ProfileImageDescriptionModel.swift in Sources */,
 				1C178EB32768411800FAD445 /* SignInViewController.swift in Sources */,
 				1CD3048A27642E80009DC6D2 /* NetworkClient.swift in Sources */,
 				1CDEB29D2775AFAE009DD5DA /* ProfileDetailViewModel.swift in Sources */,
@@ -524,7 +524,7 @@
 				1C235F822755DAEF0068FEA8 /* SceneDelegate.swift in Sources */,
 				1CB93F0927790C69007EFBBE /* EditProfileDetailViewController.swift in Sources */,
 				1CBB5F25277FAA5A0046532D /* SettingsViewModel.swift in Sources */,
-				1CCC182827765BA400DDBA18 /* ImageService.swift in Sources */,
+				1CCC182827765BA400DDBA18 /* ProfileService.swift in Sources */,
 				1CBB5F23277FAA4A0046532D /* SettingsView.swift in Sources */,
 				1CBB5F29277FADD20046532D /* BaseTapBarViewController.swift in Sources */,
 				1C89F866277D31E600EF7010 /* DiscoverViewController.swift in Sources */,

@@ -20,23 +20,23 @@ struct BackendError: Codable, Error {
     var message: String
 }
 
-protocol ServiceProtocol {
-    func fetchMyImagesURLWithDescriptions() -> AnyPublisher<DataResponse<ProfileDetailsModel, NetworkError>, Never>?
-    func fetchDiscoverImagesURLWithDescriptions() -> AnyPublisher<DataResponse<ProfileDetailsModel, NetworkError>, Never>?
+protocol ProfileServiceProtocol {
+    func fetchMyImagesURLWithDescriptions() -> AnyPublisher<DataResponse<ProfileDetailModel, NetworkError>, Never>?
+    func fetchDiscoverImagesURLWithDescriptions() -> AnyPublisher<DataResponse<ProfileDetailModel, NetworkError>, Never>?
     func uploadImageDescription(index: Int, description: String) -> AnyPublisher<DataResponse<String, NetworkError>, Never>?
     func uploadImageWithLink(putURL: String?, image: UIImage?) -> AnyPublisher<DataResponse<Data?, NetworkError>, Never>?
+    func updateProfile(profileDetail: ProfileDetailModel) -> AnyPublisher<DataResponse<String, NetworkError>, Never>?
 }
 
-class ImageService: ServiceProtocol {
-    func fetchDiscoverImagesURLWithDescriptions() -> AnyPublisher<DataResponse<ProfileDetailsModel, NetworkError>, Never>? {
+class ProfileService: ProfileServiceProtocol {
+    static let shared: ProfileServiceProtocol = ProfileService()
+    private init() { }
+    
+    func fetchDiscoverImagesURLWithDescriptions() -> AnyPublisher<DataResponse<ProfileDetailModel, NetworkError>, Never>? {
         fetchImagesURLWithDescriptions(URI: "api/profile/fetchDiscoverImagesURLWithDescriptions")
     }
     
-    
-    static let shared: ServiceProtocol = ImageService()
-    private init() { }
-    
-    private func fetchImagesURLWithDescriptions(URI: String) -> AnyPublisher<DataResponse<ProfileDetailsModel, NetworkError>, Never>? {
+    private func fetchImagesURLWithDescriptions(URI: String) -> AnyPublisher<DataResponse<ProfileDetailModel, NetworkError>, Never>? {
         guard let accessToken = AccountManager.shared.getAuthenticationToken() else {
             return nil
         }
@@ -48,7 +48,7 @@ class ImageService: ServiceProtocol {
         ]
         
         return NetworkClient.shared.session.request(requestURL, method: .get, headers: headers).validate()
-            .publishDecodable(type: ProfileDetailsModel.self)
+            .publishDecodable(type: ProfileDetailModel.self)
             .map { response in
                 response.mapError { error -> NetworkError in
                     let backendError = response.data.flatMap { try? JSONDecoder().decode(BackendError.self, from: $0)}
@@ -60,7 +60,7 @@ class ImageService: ServiceProtocol {
     }
     
     
-    func fetchMyImagesURLWithDescriptions() -> AnyPublisher<DataResponse<ProfileDetailsModel, NetworkError>, Never>? {
+    func fetchMyImagesURLWithDescriptions() -> AnyPublisher<DataResponse<ProfileDetailModel, NetworkError>, Never>? {
         fetchImagesURLWithDescriptions(URI: "api/profile/getAllDescriptionImages")
         
     }
@@ -79,6 +79,35 @@ class ImageService: ServiceProtocol {
         let parameters: [String: Any] = [
             "description": description,
             "index": index
+        ]
+        
+        return NetworkClient.shared.session.request(requestURL, method: .post, parameters: parameters, headers: headers).validate()
+            .publishString()
+            .map { response in
+                response.mapError { error -> NetworkError in
+                    return NetworkError(initialError: error, backendError: nil)
+                }
+            }
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+        
+    }
+    
+    func updateProfile(profileDetail: ProfileDetailModel) -> AnyPublisher<DataResponse<String, NetworkError>, Never>? {
+        guard let accessToken = AccountManager.shared.getAuthenticationToken() else {
+            return nil
+        }
+        
+        let requestURL = NetworkClient.shared.buildURL(uri: "api/profile/updataProfile")
+        
+        let headers: HTTPHeaders = [
+          "x-access-token": accessToken,
+        ]
+        
+        let parameters: [String: Any] = [
+            "name": profileDetail.name,
+            "linkedInLink": profileDetail.linkedInLink,
+            "contactNumber": profileDetail.contactNumer ?? ""
         ]
         
         return NetworkClient.shared.session.request(requestURL, method: .post, parameters: parameters, headers: headers).validate()

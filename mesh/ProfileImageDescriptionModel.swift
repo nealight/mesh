@@ -8,13 +8,22 @@
 import Foundation
 import SwiftUI
 
-class ProfileDetailsModel: Codable {
-    var models: [ProfileDetailModel]
+class ProfileDetailModel: Codable {
+    var models: [ProfileImageDescriptionModel]?
+    
     var name: String
+    var linkedInLink: String
+    var contactNumer: String?
+    
+    init() {
+        name = ""
+        linkedInLink = ""
+    }
+    
 }
 
 
-class ProfileDetailModel: Codable {
+class ProfileImageDescriptionModel: Codable {
     var getURL: String
     var putURL: String?
     var description: String

@@ -27,7 +27,7 @@ func mapPictureNumberToIndex(number: ProfilePictureNumber) -> Int {
 }
 
 final class ProfileDetailViewModel: ObservableObject {
-    @Published var imagesWithDescription = [ProfileDetailModel]()
+    @Published var imagesWithDescription = [ProfileImageDescriptionModel]()
     @Published var profilePictureNumber: ProfilePictureNumber = .First
     @Published var name: String = ""
     private var isMyProfile: Bool
@@ -41,16 +41,16 @@ final class ProfileDetailViewModel: ObservableObject {
      }
     
     private var cancellableSet: Set<AnyCancellable> = []
-    var dataManager: ServiceProtocol
+    var dataManager: ProfileServiceProtocol
     var editTapHandler: (() -> Void)?
     
-    init(dataManager: ServiceProtocol = ImageService.shared, isMyProfile: Bool = true) {
+    init(dataManager: ProfileServiceProtocol = ProfileService.shared, isMyProfile: Bool = true) {
         self.dataManager = dataManager
         self.isMyProfile = isMyProfile
         
-        self.imagesWithDescription.append(ProfileDetailModel())
-        self.imagesWithDescription.append(ProfileDetailModel())
-        self.imagesWithDescription.append(ProfileDetailModel())
+        self.imagesWithDescription.append(ProfileImageDescriptionModel())
+        self.imagesWithDescription.append(ProfileImageDescriptionModel())
+        self.imagesWithDescription.append(ProfileImageDescriptionModel())
         
         retreivedImages()
     }
@@ -68,9 +68,9 @@ final class ProfileDetailViewModel: ObservableObject {
             dataManager.fetchMyImagesURLWithDescriptions()?
                         .sink { (dataResponse) in
                             if dataResponse.error != nil {
-                                debugPrint("ProfileDetailView Error")
+                                debugPrint("ProfileDetailViewModel Error")
                             } else {
-                                let modelsArray = dataResponse.value!.models
+                                let modelsArray = dataResponse.value!.models!
                                 self.name = dataResponse.value!.name
                                 for i in 0..<min(3, modelsArray.count) {
                                     self.imagesWithDescription[i] = modelsArray[i]
@@ -82,9 +82,9 @@ final class ProfileDetailViewModel: ObservableObject {
             dataManager.fetchDiscoverImagesURLWithDescriptions()?
                         .sink { (dataResponse) in
                             if dataResponse.error != nil {
-                                debugPrint("ProfileDetailView Error")
+                                debugPrint("ProfileDetailViewModel Error")
                             } else {
-                                let modelsArray = dataResponse.value!.models
+                                let modelsArray = dataResponse.value!.models!
                                 self.name = dataResponse.value!.name
                                 for i in 0..<min(3, modelsArray.count) {
                                     self.imagesWithDescription[i] = modelsArray[i]

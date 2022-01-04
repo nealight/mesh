@@ -8,15 +8,14 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @State private var displayedName = ""
-    @State private var linkedInLink = ""
+    @ObservedObject public var viewModel: SettingsViewModel
     
     var body: some View {
         NavigationView {
             Form {
                 Section(header: Text("Personal Information")) {
-                    TextField("Displayed Name", text: $displayedName)
-                    TextField("Website Link", text: $linkedInLink)
+                    TextField("Displayed Name", text: $viewModel.profileInfo.name)
+                    TextField("Website Link", text: $viewModel.profileInfo.linkedInLink)
                 }
             }.background(Color.gray).navigationTitle("Settings")
         }.navigationViewStyle(.stack)
@@ -25,6 +24,6 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView()
+        SettingsView(viewModel: SettingsViewModel())
     }
 }
