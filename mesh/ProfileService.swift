@@ -50,7 +50,8 @@ class ProfileService: ProfileServiceProtocol {
         return NetworkClient.shared.session.request(requestURL, method: .get, headers: headers).validate()
             .publishDecodable(type: ProfileDetailModel.self)
             .map { response in
-                response.mapError { error -> NetworkError in
+                debugPrint(response)
+                return response.mapError { error -> NetworkError in
                     let backendError = response.data.flatMap { try? JSONDecoder().decode(BackendError.self, from: $0)}
                     return NetworkError(initialError: error, backendError: backendError)
                 }

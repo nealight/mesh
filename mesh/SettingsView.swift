@@ -15,7 +15,7 @@ struct SettingsView: View {
         NavigationView {
             Form {
                 Section(header: Text("Displayed Name")) {
-                    TextField("", text: $viewModel.profileInfo.name).submitLabel(.done)
+                    TextField("Name shown on Profile", text: $viewModel.profileInfo.name).submitLabel(.done)
                 }
                 
                 Section(header: Text("LinkedIn or Your Personal Website")) {
@@ -23,6 +23,12 @@ struct SettingsView: View {
                 }
                     
             }.background(Color.gray).navigationTitle("Settings").toolbar {
+                ToolbarItem(placement: .navigationBarLeading, content: {
+                    Button("Cancel") {
+                        self.presentationStatus.wrappedValue.dismiss()
+                    }
+                })
+                
                 ToolbarItem(placement: .navigationBarTrailing, content: {
                     Button("Save") {
                         viewModel.updateProfileInfo()

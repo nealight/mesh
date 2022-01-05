@@ -34,11 +34,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        let settingsView = SettingsView(viewModel: SettingsViewModel())
-        settingsVC = UIHostingController(rootView: settingsView)
         prepareView()
-
     }
     
     override func viewDidLoad() {
@@ -101,6 +97,10 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     @IBAction func settingsButtonTapped(_ sender: UIButton) {
+        
+        let settingsView = SettingsView(viewModel: SettingsViewModel())
+        settingsVC = UIHostingController(rootView: settingsView)
+        
         if let settingsVC = settingsVC {
             settingsVC.modalPresentationStyle = .fullScreen
             present(settingsVC, animated: true, completion: nil)

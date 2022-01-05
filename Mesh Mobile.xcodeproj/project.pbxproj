@@ -34,7 +34,7 @@
 		1CD3048A27642E80009DC6D2 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD3048927642E80009DC6D2 /* NetworkClient.swift */; };
 		1CDEB2992775A23D009DD5DA /* ProfileDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDEB2982775A23D009DD5DA /* ProfileDetailView.swift */; };
 		1CDEB29D2775AFAE009DD5DA /* ProfileDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDEB29C2775AFAE009DD5DA /* ProfileDetailViewModel.swift */; };
-		1CDEB29F2775B106009DD5DA /* ProfileImageDescriptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDEB29E2775B106009DD5DA /* ProfileImageDescriptionModel.swift */; };
+		1CDEB29F2775B106009DD5DA /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDEB29E2775B106009DD5DA /* ProfileModel.swift */; };
 		1EDBAAC5C43A1266AC52F0D4 /* Pods_mesh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E9A1CFB6C1D20853D2D7944 /* Pods_mesh.framework */; };
 		54CCB25AACA1F917F623CDDD /* Pods_meshTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7148FDF4A69D705228EC9C8D /* Pods_meshTests.framework */; };
 		C50A2015F858ED46CA92A97B /* Pods_mesh_meshUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5770A05204318FF53C2106C /* Pods_mesh_meshUITests.framework */; };
@@ -92,7 +92,7 @@
 		1CD3048927642E80009DC6D2 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		1CDEB2982775A23D009DD5DA /* ProfileDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailView.swift; sourceTree = "<group>"; };
 		1CDEB29C2775AFAE009DD5DA /* ProfileDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewModel.swift; sourceTree = "<group>"; };
-		1CDEB29E2775B106009DD5DA /* ProfileImageDescriptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageDescriptionModel.swift; sourceTree = "<group>"; };
+		1CDEB29E2775B106009DD5DA /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		4121485CD71BAD26DA00AC46 /* Pods-mesh.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mesh.release.xcconfig"; path = "Target Support Files/Pods-mesh/Pods-mesh.release.xcconfig"; sourceTree = "<group>"; };
 		56F096211505657C5412FB9E /* Pods-mesh-meshUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mesh-meshUITests.debug.xcconfig"; path = "Target Support Files/Pods-mesh-meshUITests/Pods-mesh-meshUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7148FDF4A69D705228EC9C8D /* Pods_meshTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_meshTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -168,7 +168,7 @@
 				1C178EB02768348100FAD445 /* AccountManager.swift */,
 				1C4E08AE276E719D00D502D9 /* ImageManager.swift */,
 				1CD3048927642E80009DC6D2 /* NetworkClient.swift */,
-				1CDEB29E2775B106009DD5DA /* ProfileImageDescriptionModel.swift */,
+				1CDEB29E2775B106009DD5DA /* ProfileModel.swift */,
 				1CCC182727765BA400DDBA18 /* ProfileService.swift */,
 			);
 			name = Model;
@@ -515,7 +515,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1CDEB29F2775B106009DD5DA /* ProfileImageDescriptionModel.swift in Sources */,
+				1CDEB29F2775B106009DD5DA /* ProfileModel.swift in Sources */,
 				1C178EB32768411800FAD445 /* SignInViewController.swift in Sources */,
 				1CD3048A27642E80009DC6D2 /* NetworkClient.swift in Sources */,
 				1CDEB29D2775AFAE009DD5DA /* ProfileDetailViewModel.swift in Sources */,
