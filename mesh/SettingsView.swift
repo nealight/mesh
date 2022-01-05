@@ -9,16 +9,33 @@ import SwiftUI
 
 struct SettingsView: View {
     @ObservedObject public var viewModel: SettingsViewModel
+    @Environment(\.presentationMode) private var presentationStatus
     
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("Personal Information")) {
-                    TextField("Displayed Name", text: $viewModel.profileInfo.name)
-                    TextField("Website Link", text: $viewModel.profileInfo.linkedInLink)
+                Section(header: Text("Displayed Name")) {
+                    TextField("", text: $viewModel.profileInfo.name).submitLabel(.done)
                 }
-            }.background(Color.gray).navigationTitle("Settings")
+                
+                Section(header: Text("LinkedIn or Your Personal Website")) {
+                        TextField("Website Link", text: $viewModel.profileInfo.linkedInLink).submitLabel(.done)
+                }
+                    
+            }.background(Color.gray).navigationTitle("Settings").toolbar {
+                ToolbarItem(placement: .navigationBarTrailing, content: {
+                    Button("Save") {
+                        viewModel.updateProfileInfo()
+                        self.presentationStatus.wrappedValue.dismiss()
+                    }
+                })
+            }
         }.navigationViewStyle(.stack)
+    }
+    
+    init(viewModel: SettingsViewModel) {
+        self.viewModel = viewModel
+        viewModel.loadProfileInfo()
     }
 }
 

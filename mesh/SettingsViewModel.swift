@@ -30,8 +30,8 @@ class SettingsViewModel: ObservableObject {
     }
     
     func updateProfileInfo() {
-        
         dataManager.updateProfile(profileDetail: profileInfo)?.sink { _ in
+            self.loadProfileInfo()
             return
         }.store(in: &cancellableSet)
         

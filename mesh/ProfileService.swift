@@ -98,7 +98,7 @@ class ProfileService: ProfileServiceProtocol {
             return nil
         }
         
-        let requestURL = NetworkClient.shared.buildURL(uri: "api/profile/updataProfile")
+        let requestURL = NetworkClient.shared.buildURL(uri: "api/profile/updateMe")
         
         let headers: HTTPHeaders = [
           "x-access-token": accessToken,

@@ -32,7 +32,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet var nameTF: UILabel!
     let accountManager = AccountManager.shared
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         prepareView()
 
     }
@@ -101,7 +102,9 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     @IBAction func settingsButtonTapped(_ sender: UIButton) {
         if let settingsVC = settingsVC {
+            settingsVC.modalPresentationStyle = .fullScreen
             present(settingsVC, animated: true, completion: nil)
+            
         }
     }
     
