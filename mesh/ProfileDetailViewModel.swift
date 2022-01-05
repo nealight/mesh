@@ -31,7 +31,7 @@ final class ProfileDetailViewModel: ObservableObject {
     @Published var profilePictureNumber: ProfilePictureNumber = .First
     @Published var name: String = ""
     var websiteLink: String = ""
-    private var isMyProfile: Bool
+    private var profileType: ProfileService.profileType
     
     func getSelectedPicturePUTURL() -> String? {
         return imagesWithDescription[getSelectedPictureIndex()].putURL
@@ -45,9 +45,9 @@ final class ProfileDetailViewModel: ObservableObject {
     var dataManager: ProfileServiceProtocol
     var editTapHandler: (() -> Void)?
     
-    init(dataManager: ProfileServiceProtocol = ProfileService.shared, isMyProfile: Bool = true) {
+    init(dataManager: ProfileServiceProtocol = ProfileService.shared, profileType: ProfileService.profileType = .Me) {
         self.dataManager = dataManager
-        self.isMyProfile = isMyProfile
+        self.profileType = profileType
         
         self.imagesWithDescription.append(ProfileImageDescriptionModel())
         self.imagesWithDescription.append(ProfileImageDescriptionModel())
@@ -65,37 +65,20 @@ final class ProfileDetailViewModel: ObservableObject {
     
     
     func retreivedImages() {
-        if isMyProfile {
-            dataManager.fetchMyImagesURLWithDescriptions()?
-                        .sink { (dataResponse) in
-                            if dataResponse.error != nil {
-                                debugPrint("ProfileDetailViewModel Error")
-                            } else {
-                                let modelsArray = dataResponse.value!.models!
-                                self.name = dataResponse.value!.name
-                                for i in 0..<min(3, modelsArray.count) {
-                                    self.imagesWithDescription[i] = modelsArray[i]
-                                    self.load(url: modelsArray[i].getURL, toIndex: i)
-                                }
+        dataManager.fetchProfileInfo(profileType: profileType)?
+                    .sink { (dataResponse) in
+                        if dataResponse.error != nil {
+                            debugPrint("ProfileDetailViewModel Error")
+                        } else {
+                            let modelsArray = dataResponse.value!.models!
+                            self.name = dataResponse.value!.name
+                            self.websiteLink = dataResponse.value!.linkedInLink
+                            for i in 0..<min(3, modelsArray.count) {
+                                self.imagesWithDescription[i] = modelsArray[i]
+                                self.load(url: modelsArray[i].getURL, toIndex: i)
                             }
-                        }.store(in: &cancellableSet)
-        } else {
-            dataManager.fetchDiscoverImagesURLWithDescriptions()?
-                        .sink { (dataResponse) in
-                            debugPrint(dataResponse)
-                            if dataResponse.error != nil {
-                                debugPrint("ProfileDetailViewModel Error")
-                            } else {
-                                let modelsArray = dataResponse.value!.models!
-                                self.name = dataResponse.value!.name
-                                self.websiteLink = dataResponse.value!.linkedInLink
-                                for i in 0..<min(3, modelsArray.count) {
-                                    self.imagesWithDescription[i] = modelsArray[i]
-                                    self.load(url: modelsArray[i].getURL, toIndex: i)
-                                }
-                            }
-                        }.store(in: &cancellableSet)
-        }
+                        }
+                    }.store(in: &cancellableSet)
     }
     
     @Published var images: [UIImage?] = [nil, nil, nil]

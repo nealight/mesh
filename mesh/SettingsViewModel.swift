@@ -19,7 +19,7 @@ class SettingsViewModel: ObservableObject {
     }
     
     func loadProfileInfo() {
-        dataManager.fetchMyImagesURLWithDescriptions()?
+        dataManager.fetchProfileInfo(profileType: .Me)?
                     .sink { (dataResponse) in
                         if dataResponse.error != nil {
                             debugPrint("SettingsViewModel Error")

@@ -21,22 +21,23 @@ struct BackendError: Codable, Error {
 }
 
 protocol ProfileServiceProtocol {
-    func fetchMyImagesURLWithDescriptions() -> AnyPublisher<DataResponse<ProfileDetailModel, NetworkError>, Never>?
-    func fetchDiscoverImagesURLWithDescriptions() -> AnyPublisher<DataResponse<ProfileDetailModel, NetworkError>, Never>?
+    func fetchProfileInfo(profileType: ProfileService.profileType) -> AnyPublisher<DataResponse<ProfileDetailModel, NetworkError>, Never>?
     func uploadImageDescription(index: Int, description: String) -> AnyPublisher<DataResponse<String, NetworkError>, Never>?
     func uploadImageWithLink(putURL: String?, image: UIImage?) -> AnyPublisher<DataResponse<Data?, NetworkError>, Never>?
     func updateProfile(profileDetail: ProfileDetailModel) -> AnyPublisher<DataResponse<String, NetworkError>, Never>?
 }
 
 class ProfileService: ProfileServiceProtocol {
+    public enum profileType: String {
+        case Me = "me"
+        case Public = "public"
+    }
+    
     static let shared: ProfileServiceProtocol = ProfileService()
     private init() { }
     
-    func fetchDiscoverImagesURLWithDescriptions() -> AnyPublisher<DataResponse<ProfileDetailModel, NetworkError>, Never>? {
-        fetchImagesURLWithDescriptions(URI: "api/profile/fetchDiscoverImagesURLWithDescriptions")
-    }
     
-    private func fetchImagesURLWithDescriptions(URI: String) -> AnyPublisher<DataResponse<ProfileDetailModel, NetworkError>, Never>? {
+    private func fetchProfileInfo(URI: String) -> AnyPublisher<DataResponse<ProfileDetailModel, NetworkError>, Never>? {
         guard let accessToken = AccountManager.shared.getAuthenticationToken() else {
             return nil
         }
@@ -61,8 +62,12 @@ class ProfileService: ProfileServiceProtocol {
     }
     
     
-    func fetchMyImagesURLWithDescriptions() -> AnyPublisher<DataResponse<ProfileDetailModel, NetworkError>, Never>? {
-        fetchImagesURLWithDescriptions(URI: "api/profile/getAllDescriptionImages")
+    func fetchProfileInfo(profileType: ProfileService.profileType) -> AnyPublisher<DataResponse<ProfileDetailModel, NetworkError>, Never>? {
+        if profileType == .Me {
+            return fetchProfileInfo(URI: "api/profile/getMyProfileInfo")
+        } else {
+            return fetchProfileInfo(URI: "api/profile/fetchDiscoverImagesURLWithDescriptions")
+        }
         
     }
     

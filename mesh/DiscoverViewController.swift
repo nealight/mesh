@@ -38,7 +38,7 @@ class DiscoverViewController: UIViewController {
     
     
     func initializeProfileView() {
-        profileDetailView = ProfileDetailView(viewModel: ProfileDetailViewModel(isMyProfile: false), navigationTitle: nil)
+        profileDetailView = ProfileDetailView(viewModel: ProfileDetailViewModel(profileType: .Public), navigationTitle: nil)
 
         guard let profileDetailView = profileDetailView else {
             return
