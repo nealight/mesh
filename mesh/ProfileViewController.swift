@@ -34,6 +34,9 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        let settingsView = SettingsView(viewModel: SettingsViewModel())
+        settingsVC = UIHostingController(rootView: settingsView)
         prepareView()
 
     }
@@ -57,9 +60,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         image.layer.cornerRadius = image.frame.height/2
         image.clipsToBounds = true
         
-        
-        let settingsView = SettingsView(viewModel: SettingsViewModel())
-        settingsVC = UIHostingController(rootView: settingsView)
     }
     
     func gotUserInfo(userInfo: UserInfo) {
