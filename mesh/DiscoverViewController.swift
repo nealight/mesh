@@ -8,6 +8,7 @@
 import UIKit
 import SwiftUI
 import Combine
+import SafariServices
 
 struct DiscoverError: Error {
     
@@ -15,6 +16,7 @@ struct DiscoverError: Error {
 
 class DiscoverViewController: UIViewController {
     var profileDetailVC: UIHostingController<ProfileDetailView>?
+    var profileDetailView: ProfileDetailView?
     private var cancellableSet: Set<AnyCancellable> = []
     let accountManager = AccountManager.shared
 
@@ -36,8 +38,12 @@ class DiscoverViewController: UIViewController {
     
     
     func initializeProfileView() {
-        let profileDetailView = ProfileDetailView(viewModel: ProfileDetailViewModel(isMyProfile: false), navigationTitle: nil)
+        profileDetailView = ProfileDetailView(viewModel: ProfileDetailViewModel(isMyProfile: false), navigationTitle: nil)
 
+        guard let profileDetailView = profileDetailView else {
+            return
+        }
+        
         let viewCtrl = UIHostingController(rootView: profileDetailView)
         addChild(viewCtrl)
         view.addSubview(viewCtrl.view)
@@ -70,5 +76,12 @@ class DiscoverViewController: UIViewController {
         initializeProfileView()
     }
     
+    @IBAction func tappedOnWeb(_ sender: UIBarButtonItem) {
+        guard let url = URL(string: (profileDetailView?.viewModel.websiteLink) ?? "") else {
+            return
+        }
+        let svc = SFSafariViewController(url: url)
+        self.present(svc, animated: true, completion: nil)
+    }
     
 }

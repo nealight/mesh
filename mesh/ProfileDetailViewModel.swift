@@ -30,6 +30,7 @@ final class ProfileDetailViewModel: ObservableObject {
     @Published var imagesWithDescription = [ProfileImageDescriptionModel]()
     @Published var profilePictureNumber: ProfilePictureNumber = .First
     @Published var name: String = ""
+    var websiteLink: String = ""
     private var isMyProfile: Bool
     
     func getSelectedPicturePUTURL() -> String? {
@@ -81,11 +82,13 @@ final class ProfileDetailViewModel: ObservableObject {
         } else {
             dataManager.fetchDiscoverImagesURLWithDescriptions()?
                         .sink { (dataResponse) in
+                            debugPrint(dataResponse)
                             if dataResponse.error != nil {
                                 debugPrint("ProfileDetailViewModel Error")
                             } else {
                                 let modelsArray = dataResponse.value!.models!
                                 self.name = dataResponse.value!.name
+                                self.websiteLink = dataResponse.value!.linkedInLink
                                 for i in 0..<min(3, modelsArray.count) {
                                     self.imagesWithDescription[i] = modelsArray[i]
                                     self.load(url: modelsArray[i].getURL, toIndex: i)
